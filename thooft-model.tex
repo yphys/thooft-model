@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{slashed}
+
+\hypersetup{
+        bookmarksnumbered,
+        unicode,                        % use with \texorpdfstring
+        colorlinks,                     % avoid stupid boxes
+        citecolor=[rgb]{.9,0,.5},       % \cite
+        urlcolor=[rgb]{0,0,1},  % \href
+        linkcolor=[rgb]{0,.7,0} % \ref , toc
+        }
+
+\usepackage[
+    %backend=biber, 
+    natbib=true,
+    style=numeric,
+    sorting=none
+]{biblatex}
+
+\newcommand{\bref}[1]{(\ref{#1})}
+\newcommand{\pd}{\partial}
+\title{Notes on `t Hooft's model}
+\author{Yu-Ping Wang}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+\section{2D QCD}
+\paragraph{}The Lagrangian of two-dimensional QCD with $U(N)$ gauge group with $m$-flavors of Dirac fermions.
+\[
+{\cal L} = \frac{1}{4}\textrm{tr}F_{\mu\nu}F^{\mu\nu} - q_{a}\left(\slashed{D}-m^2\right)\overline{q}^{a}, \quad a = 1, \cdots m. 
+\]
+We shall set up some basic notations.  $\slashed{D} = \gamma^{\nu}D_{\nu}$ is the Dirac derivatives, and 
+\[
+F_{\mu\nu} = \pd_{\mu}A_{\nu}-\pd_{\nu}A_{\mu} + g \left[A_{\mu}, A_{\nu}\right], \quad  D_{\mu}q^{a} = \pd_{\mu}q^{a} + g \overline{A}_{\mu}\cdot q^{a}.
+\]
+$\overline{A}_{\mu} = A_{\mu} - \frac{1}{N}I \textrm{tr}A_{\mu}$ is the traceless part of $A_{\mu}$.
+
+Its more convenient to use the light-cone coordinate.
+\[
+x_{\mu} = (x_{+}, x_{-}), \quad x_{\pm}  = \frac{1}{\sqrt{2}}\left( x_{0}\pm x_{1}\right).
+\]
+The momentum in light-cone coordinate is denote similarly $p_{\pm}=\frac{1}{\sqrt{2}}\left( p_{0}\pm p_{1}\right)$, and the inner product is $a_{\mu}b^{\mu} = a_{+}b_{-} + a_{-}b_{+}$. This means that when raising/lowering the indices, the plus and minus sing needs to be exchanged.
+
+The gauge transformation of $A_{\mu}$ is $\delta A_{\mu} = $
+
+\nocite{*}
+\printbibliography
+
+\end{document}
