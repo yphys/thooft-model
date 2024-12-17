@@ -6,7 +6,11 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{slashed}
-
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{tikz-feynman}
+\usepackage{lipsum}
+\usepackage{array}
 \hypersetup{
         bookmarksnumbered,
         unicode,                        % use with \texorpdfstring
@@ -23,6 +27,9 @@
     sorting=none
 ]{biblatex}
 
+\usepackage{feynmp-auto}
+%\usepackage{feynman}
+
 \newcommand{\bref}[1]{(\ref{#1})}
 \newcommand{\pd}{\partial}
 \title{Notes on `t Hooft's model}
@@ -37,7 +44,7 @@
 \section{2D QCD}
 \paragraph{}The Lagrangian of two-dimensional QCD with $U(N)$ gauge group with $m$-flavors of Dirac fermions.
 \[
-{\cal L} = \frac{1}{4}\textrm{tr}F_{\mu\nu}F^{\mu\nu} - q_{a}\left(\slashed{D}-m^2\right)\overline{q}^{a}, \quad a = 1, \cdots m. 
+{\cal L} = \frac{1}{4}\textrm{tr}F_{\mu\nu}F^{\mu\nu} - q_{a}\left(i\slashed{D}-m_{a}\right)\overline{q}^{a}, \quad a = 1, \cdots m. 
 \]
 We shall set up some basic notations.  $\slashed{D} = \gamma^{\nu}D_{\nu}$ is the Dirac derivatives, and 
 \[
@@ -51,7 +58,89 @@ x_{\mu} = (x_{+}, x_{-}), \quad x_{\pm}  = \frac{1}{\sqrt{2}}\left( x_{0}\pm x_{
 \]
 The momentum in light-cone coordinate is denote similarly $p_{\pm}=\frac{1}{\sqrt{2}}\left( p_{0}\pm p_{1}\right)$, and the inner product is $a_{\mu}b^{\mu} = a_{+}b_{-} + a_{-}b_{+}$. This means that when raising/lowering the indices, the plus and minus sing needs to be exchanged.
 
-The gauge transformation of $A_{\mu}$ is $\delta A_{\mu} = $
+In two-dimensons, we are allowed to choose a gauge of $A_{\mu}$ such that $A_{-} = A^{+}$ =0. We also list out the explicit values of the gamma matrices $\gamma_{\mu}$.
+
+\[
+\gamma_{\mu} \rightarrow \gamma_{\pm}, \quad \gamma_{+} = 
+\begin{pmatrix}
+ 0 & 1\\
+ 0 & 0   
+\end{pmatrix},\;
+\gamma_{-} = 
+\begin{pmatrix}
+ 0 & 0\\
+ 1 & 0   
+\end{pmatrix}.
+\]
+In this gauge, the Lagrangian could be explicit written down
+\[
+{\cal L} = -\frac{1}{2}\textrm{tr}\left(\pd_{-}A_{+}\right)^2 - q_{a}\left(i\gamma_{+}\pd_{-}+ i\gamma_{-}\pd_{+} + m_{a} +g\gamma_{-}\overline{A}_{+} \right)\overline{q}^{a}.
+\]
+
+The advantage of choosing the light-cone gauge is that there are no direct interactions between the gluons. Making the Feynman diagrams much simpler.  Since $A_{\mu}$ is a $U(N)$ matrix, we could use the double line notation for the gluon propagators. 
+
+The Feynman rules are
+\begin{center}
+\begin{tabular}{m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
+\begin{tikzpicture}[baseline={([yshift=-1.5ex]i1.base)}]
+        \begin{feynman}
+        \vertex at (0, 1) (i1) ;
+        \vertex at (0, 0.8) (i2) ;
+        \vertex at (3 , 1) (i3);
+        \vertex at (3, 0.8) (i4);
+        \vertex at (1.5, 0.8) (a);
+        \diagram*{
+            (i1) -- [fermion] (i3),
+            (i4) -- [fermion] (i2),
+        };
+    \end{feynman}
+\end{tikzpicture} &\( -\frac{i}{k_{-}^2}\) & Gluon propagator\\[1em]
+\begin{tikzpicture} [baseline={([yshift=-1.5ex]i1.base)}]
+    \begin{feynman}
+        \vertex at (0, 1) (i1) {\(i\)} ;
+        \vertex at (3 , 1) (i3){\(j\)} ;
+        \vertex at (1.5, 1) (a);
+        \vertex at (1.5, 1.3)(b) {\(a\)};
+        \diagram*{
+            (i1) -- [fermion] (i3),
+        };
+    \end{feynman}
+\end{tikzpicture} & \( \frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} -m_{a} +i\epsilon}\) &\\ [1em]
+& = \(\frac{\gamma_{+}p_{-} + \gamma_{-}p_{+} + m_{a}}{2p_{+}p_{-} - m_{a}^2 + i\epsilon} \)& Fermion propagator\\[1em]
+    \begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
+        \begin{feynman}
+        \vertex at (0, 0) (i1) ;
+        \vertex at (0, 0.2) (i2) ;
+        \vertex at (1.7 , 0) (a);
+        \vertex at (1.7, 0.2) (b);
+        \vertex at (2.5, 1.2) (i3) {\(i\)};
+        \vertex at (2.5, -1) (i4)  {\(j\)};
+        \diagram*{
+            (i4) -- [fermion] (a) -- [fermion] (i1),
+            (i2) -- [fermion] (b) -- [fermion] (i3),
+        };
+    \end{feynman}
+\end{tikzpicture}
+    & \(  ig \gamma_{-} \)& Gluon-quark interaction\\[3em]
+\begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
+        \begin{feynman}
+        \vertex at (0, 0) (i1) ;
+        \vertex at (0, 0.2) (i2) ;
+        \vertex at (2.5, 1.2) (i3) {\(i\)};
+        \vertex at (2.5, -1) (i4) {\(j\)};
+        \vertex at (1.7 , 0)  (a);
+        \vertex at (1.7, 0.2) (b);
+        \vertex at (1.5 , 0)  (a1);
+        \vertex at (1.5, 0.2) (b1);
+        \diagram*{
+            (i4) -- [fermion] (a) -- (b) -- [fermion] (i3),
+            (i2) -- [fermion] (b1) --  (a1) -- [fermion] (i1),
+        };
+    \end{feynman}
+\end{tikzpicture}
+& \(-\frac{i}{N}g\gamma_{-}\) & Higher order gluon-quark interaction.
+\end{tabular}
+\end{center}  
 
 \nocite{*}
 \printbibliography
