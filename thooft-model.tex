@@ -8,6 +8,7 @@
 \usepackage{slashed}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{esint}
 \usepackage{tikz-feynman}
 \usepackage{lipsum}
 \usepackage{array}
@@ -32,6 +33,8 @@
 
 \newcommand{\bref}[1]{(\ref{#1})}
 \newcommand{\pd}{\partial}
+\newcommand{\sh}{\textrm{\,sh}}
+\newcommand{\ch}{\textrm{ch}}
 \title{Notes on `t Hooft's model}
 \author{Yu-Ping Wang}
 \date{\today}
@@ -44,104 +47,150 @@
 \section{2D QCD}
 \paragraph{}The Lagrangian of two-dimensional QCD with $U(N)$ gauge group with $m$-flavors of Dirac fermions.
 \[
-{\cal L} = \frac{1}{4}\textrm{tr}F_{\mu\nu}F^{\mu\nu} - q_{a}\left(i\slashed{D}-m_{a}\right)\overline{q}^{a}, \quad a = 1, \cdots m. 
+	{\cal L} = \frac{1}{4}\textrm{tr}F_{\mu\nu}F^{\mu\nu} - q_{a}\left(i\slashed{D}-m_{a}\right)\overline{q}^{a}, \quad a = 1, \cdots m.
 \]
-We shall set up some basic notations.  $\slashed{D} = \gamma^{\nu}D_{\nu}$ is the Dirac derivatives, and 
+We shall set up some basic notations.  $\slashed{D} = \gamma^{\nu}D_{\nu}$ is the Dirac derivatives, and
 \[
-F_{\mu\nu} = \pd_{\mu}A_{\nu}-\pd_{\nu}A_{\mu} + g \left[A_{\mu}, A_{\nu}\right], \quad  D_{\mu}q^{a} = \pd_{\mu}q^{a} + g \overline{A}_{\mu}\cdot q^{a}.
+	F_{\mu\nu} = \pd_{\mu}A_{\nu}-\pd_{\nu}A_{\mu} + g \left[A_{\mu}, A_{\nu}\right], \quad  D_{\mu}q^{a} = \pd_{\mu}q^{a} + g \overline{A}_{\mu}\cdot q^{a}.
 \]
 $\overline{A}_{\mu} = A_{\mu} - \frac{1}{N}I \textrm{tr}A_{\mu}$ is the traceless part of $A_{\mu}$.
 
 Its more convenient to use the light-cone coordinate.
 \[
-x_{\mu} = (x_{+}, x_{-}), \quad x_{\pm}  = \frac{1}{\sqrt{2}}\left( x_{0}\pm x_{1}\right).
+	x_{\mu} = (x_{+}, x_{-}), \quad x_{\pm}  = \frac{1}{\sqrt{2}}\left( x_{0}\pm x_{1}\right).
 \]
 The momentum in light-cone coordinate is denote similarly $p_{\pm}=\frac{1}{\sqrt{2}}\left( p_{0}\pm p_{1}\right)$, and the inner product is $a_{\mu}b^{\mu} = a_{+}b_{-} + a_{-}b_{+}$. This means that when raising/lowering the indices, the plus and minus sing needs to be exchanged.
 
 In two-dimensons, we are allowed to choose a gauge of $A_{\mu}$ such that $A_{-} = A^{+}$ =0. We also list out the explicit values of the gamma matrices $\gamma_{\mu}$.
 
 \[
-\gamma_{\mu} \rightarrow \gamma_{\pm}, \quad \gamma_{+} = 
-\begin{pmatrix}
- 0 & 1\\
- 0 & 0   
-\end{pmatrix},\;
-\gamma_{-} = 
-\begin{pmatrix}
- 0 & 0\\
- 1 & 0   
-\end{pmatrix}.
+	\gamma_{\mu} \rightarrow \gamma_{\pm}, \quad \gamma_{+} =
+	\begin{pmatrix}
+		0 & 1 \\
+		0 & 0
+	\end{pmatrix},\;
+	\gamma_{-} =
+	\begin{pmatrix}
+		0 & 0 \\
+		1 & 0
+	\end{pmatrix}.
 \]
 In this gauge, the Lagrangian could be explicit written down
 \[
-{\cal L} = -\frac{1}{2}\textrm{tr}\left(\pd_{-}A_{+}\right)^2 - q_{a}\left(i\gamma_{+}\pd_{-}+ i\gamma_{-}\pd_{+} + m_{a} +g\gamma_{-}\overline{A}_{+} \right)\overline{q}^{a}.
+	{\cal L} = -\frac{1}{2}\textrm{tr}\left(\pd_{-}A_{+}\right)^2 - q_{a}\left(i\gamma_{+}\pd_{-}+ i\gamma_{-}\pd_{+} + m_{a} +g\gamma_{-}\overline{A}_{+} \right)\overline{q}^{a}.
 \]
 
-The advantage of choosing the light-cone gauge is that there are no direct interactions between the gluons. Making the Feynman diagrams much simpler.  Since $A_{\mu}$ is a $U(N)$ matrix, we could use the double line notation for the gluon propagators. 
+The advantage of choosing the light-cone gauge is that there are no direct interactions between the gluons. Making the Feynman diagrams much simpler.  Since $A_{\mu}$ is a $U(N)$ matrix, we could use the double line notation for the gluon propagators.
 
-The Feynman rules are
+The Feynman rules are:
 \begin{center}
-\begin{tabular}{m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
-\begin{tikzpicture}[baseline={([yshift=-1.5ex]i1.base)}]
-        \begin{feynman}
-        \vertex at (0, 1) (i1) ;
-        \vertex at (0, 0.8) (i2) ;
-        \vertex at (3 , 1) (i3);
-        \vertex at (3, 0.8) (i4);
-        \vertex at (1.5, 0.8) (a);
-        \diagram*{
-            (i1) -- [fermion] (i3),
-            (i4) -- [fermion] (i2),
-        };
-    \end{feynman}
-\end{tikzpicture} &\( -\frac{i}{k_{-}^2}\) & Gluon propagator\\[1em]
-\begin{tikzpicture} [baseline={([yshift=-1.5ex]i1.base)}]
-    \begin{feynman}
-        \vertex at (0, 1) (i1) {\(i\)} ;
-        \vertex at (3 , 1) (i3){\(j\)} ;
-        \vertex at (1.5, 1) (a);
-        \vertex at (1.5, 1.3)(b) {\(a\)};
-        \diagram*{
-            (i1) -- [fermion] (i3),
-        };
-    \end{feynman}
-\end{tikzpicture} & \( \frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} -m_{a} +i\epsilon}\) &\\ [1em]
-& = \(\frac{\gamma_{+}p_{-} + \gamma_{-}p_{+} + m_{a}}{2p_{+}p_{-} - m_{a}^2 + i\epsilon} \)& Fermion propagator\\[1em]
-    \begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
-        \begin{feynman}
-        \vertex at (0, 0) (i1) ;
-        \vertex at (0, 0.2) (i2) ;
-        \vertex at (1.7 , 0) (a);
-        \vertex at (1.7, 0.2) (b);
-        \vertex at (2.5, 1.2) (i3) {\(i\)};
-        \vertex at (2.5, -1) (i4)  {\(j\)};
-        \diagram*{
-            (i4) -- [fermion] (a) -- [fermion] (i1),
-            (i2) -- [fermion] (b) -- [fermion] (i3),
-        };
-    \end{feynman}
-\end{tikzpicture}
-    & \(  ig \gamma_{-} \)& Gluon-quark interaction\\[3em]
-\begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
-        \begin{feynman}
-        \vertex at (0, 0) (i1) ;
-        \vertex at (0, 0.2) (i2) ;
-        \vertex at (2.5, 1.2) (i3) {\(i\)};
-        \vertex at (2.5, -1) (i4) {\(j\)};
-        \vertex at (1.7 , 0)  (a);
-        \vertex at (1.7, 0.2) (b);
-        \vertex at (1.5 , 0)  (a1);
-        \vertex at (1.5, 0.2) (b1);
-        \diagram*{
-            (i4) -- [fermion] (a) -- (b) -- [fermion] (i3),
-            (i2) -- [fermion] (b1) --  (a1) -- [fermion] (i1),
-        };
-    \end{feynman}
-\end{tikzpicture}
-& \(-\frac{i}{N}g\gamma_{-}\) & Higher order gluon-quark interaction.
-\end{tabular}
-\end{center}  
+	\begin{tabular}{m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
+		\begin{tikzpicture}[baseline={([yshift=-1.5ex]i1.base)}]
+			\begin{feynman}
+				\vertex at (0, 1) (i1) ;
+				\vertex at (0, 0.8) (i2) ;
+				\vertex at (3 , 1) (i3);
+				\vertex at (3, 0.8) (i4);
+				\vertex at (1.5, 0.8) (a);
+				\diagram*{
+				(i1) -- [fermion] (i3),
+				(i4) -- [fermion] (i2),
+				};
+			\end{feynman}
+		\end{tikzpicture}  & \( -\frac{i}{k_{-}^2}\)                                                                    & Gluon propagator                                                        \\[1em]
+		\begin{tikzpicture} [baseline={([yshift=-1.5ex]i1.base)}]
+			\begin{feynman}
+				\vertex at (0, 1) (i1) {\(i\)} ;
+				\vertex at (3 , 1) (i3){\(j\)} ;
+				\vertex at (1.5, 1) (a);
+				\vertex at (1.5, 1.3)(b) {\(a\)};
+				\diagram*{
+				(i1) -- [fermion] (i3),
+				};
+			\end{feynman}
+		\end{tikzpicture} & \( \frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} -m_{a} +i\epsilon}\)                         &                                                                          \\ [1em]
+		                                                     & = \(\frac{\gamma_{+}p_{-} + \gamma_{-}p_{+} + m_{a}}{2p_{+}p_{-} - m_{a}^2 + i\epsilon} \) & Fermion propagator                    \\[1em]
+		\begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
+			\begin{feynman}
+				\vertex at (0, 0) (i1) ;
+				\vertex at (0, 0.2) (i2) ;
+				\vertex at (1.7 , 0) (a);
+				\vertex at (1.7, 0.2) (b);
+				\vertex at (2.5, 1.2) (i3) {\(i\)};
+				\vertex at (2.5, -1) (i4)  {\(j\)};
+				\diagram*{
+				(i4) -- [fermion] (a) -- [fermion] (i1),
+				(i2) -- [fermion] (b) -- [fermion] (i3),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+		                                                     & \(  ig \gamma_{-} \)                                                                       & Gluon-quark interaction               \\[3em]
+		\begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
+			\begin{feynman}
+				\vertex at (0, 0) (i1) ;
+				\vertex at (0, 0.2) (i2) ;
+				\vertex at (2.5, 1.2) (i3) {\(i\)};
+				\vertex at (2.5, -1) (i4) {\(j\)};
+				\vertex at (1.7 , 0)  (a);
+				\vertex at (1.7, 0.2) (b);
+				\vertex at (1.5 , 0)  (a1);
+				\vertex at (1.5, 0.2) (b1);
+				\diagram*{
+				(i4) -- [fermion] (a) -- (b) -- [fermion] (i3),
+				(i2) -- [fermion] (b1) --  (a1) -- [fermion] (i1),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+		                                                     & \(-\frac{i}{N}g\gamma_{-}\)                                                                & Higher order gluon-quark interaction.
+	\end{tabular}
+\end{center}
 
+We are interested in the large-$N$ limit. By the standard argument form `t Hooft, the planar graphs with no fermion loops are leading order.
+
+We shall first study the fermion propagators in the leading order of large-$N$ limit.
+
+\section{The `t Hooft's equation}
+The most general `t Hooft's equation with unequal quark mass is
+\[
+	\left(\frac{\alpha_1}{x} + \frac{\alpha_2}{1-x}\right)\phi_n(x) - \fint_{0}^{1}dy \frac{\phi_n(y)}{(x-y)^2} = 2\pi^2 \lambda_n\, \phi_n(x),
+\]
+
+There the variables $x, y$ are $p_{-}/r_{-}$ and $ q_{-}/r_{-}$ respectively, where $p, q$ are the transverse momentum of the quarks while $r$ is the total momentum of the meson. $M^2_n = 2\pi^2 g\lambda_n$ is the meson mass, and $\alpha_i = \pi m_i^2/g^2 -1$ are the are the quark masses, while $g$ being the Yang-Mills coupling.
+
+We shall transform this integral eigenvalue equation to $\nu$-space which is more suitable for complex analysis. $\nu$-space and the original momentum space ($x$-space) are related via the following integral transformation.
+\begin{gather*}
+	\phi(x) = \int_{-\infty}^{\infty} \frac{d\nu}{2\pi}\,  \psi(\nu) \left(\frac{x}{1-x}\right)^{\frac{i\nu}{2}},\\
+	\psi(x) = \int_{-1}^{1} dx \, \frac{\phi(x)}{2x(1-x)} \left(\frac{x}{1-x}\right)^{-\frac{i\nu}{2}}.
+\end{gather*}
+We could compute what each term in the `t Hooft's equation becomes after the integral transformation. This transformation has the essentially diagonalized the potential term while making the kinetic term non-diagonal.
+\begin{gather*}
+	x(1-x)\fint_{0}^{1}dy \frac{\phi_n(y)}{(x-y)^2}  \rightarrow -\frac{\pi}{2}\coth\left(\frac{\pi \nu}{2}\right), \\
+	x\phi(x)  \rightarrow \fint_{-\infty}^{\infty}\frac{d\nu{}'\psi(\nu{}')}{4\sh\pi(\nu -\nu{}')/2} + \frac{1}{4}\psi(\nu), \\
+	x(1-x)\phi(x) \rightarrow \int_{-\infty}^{\infty}\frac{\nu - \nu{}'}{8\sh\pi(\nu -\nu{}')/2}\psi(\nu{}')\,d\nu{}'.
+\end{gather*}
+Whenever we encounter an singularity on the real line, we use the following prescription of regularization.
+\[
+	\fint \frac{dx }{f(x)}  = \frac{1}{2}\left(\int \frac{dx}{f(x + i\epsilon)} + \int \frac{dx}{f(x - i\epsilon)}\right) = \frac{1}{2}\left(\int_{{\cal C}_{+}}dx  + \int_{{\cal C}_{-}}dx\right)  \frac{1}{f(x)},
+\]
+where ${\cal C}_{\pm}$ are contours that shift slightly upward and downward of real line.
+Combing everything together, we get
+\[
+	\left( \nu \coth\left(\frac{\pi\nu}{2}\right) + \frac{2\alpha}{\pi}\right)\psi_n(\nu) = \frac{i\beta}{\pi}\fint_{-\infty}^{\infty}\frac{d\nu{}'}{\sh\pi(\nu -\nu{}')/2}\psi_n(\nu{}') + \lambda_n \int_{-\infty}^{\infty} \frac{\pi(\nu{}'-\nu)d\nu{}'}{2\sh \pi(\nu - \nu{}')/2}\psi_n(\nu{}'),
+\] while denoting $\alpha \equiv (\alpha_1 + \alpha_2)/2$ and $\beta \equiv (\alpha_1 - \alpha_2)/2$.
+
+For future notational simplicity, we shall define the following functions.
+\[
+	f_{\alpha}(\nu) \equiv \nu \coth\left(\frac{\pi\nu}{2}\right) + \frac{2\alpha}{\pi}  , \quad S(\nu) \equiv \frac{\pi \nu}{2\sh (\pi \nu/2)}, \quad I(\nu) \equiv \frac{1}{2\sh (\pi \nu/2)}.
+\]
+We also define the following functional operators.
+\[
+	\hat{S}f(\nu) \equiv \int_{-\infty}^{\infty}S(\nu - \nu{}')\psi(\nu{}')d\nu{}', \quad
+	\hat{I}f(\nu) \equiv \int_{-\infty}^{\infty}I(\nu - \nu{}')\psi(\nu{}')d\nu{}'.
+\]
+The `t Hooft's equation becomes a more simple form.
+\[
+	f_{\alpha}(\nu)\psi_n(\nu) = \frac{i\beta}{\pi}\hat{I}\psi_n(\nu)+ \lambda_n \hat{S}\psi_n(\nu).
+\]
 \nocite{*}
 \printbibliography
 
