@@ -34,7 +34,9 @@
 \newcommand{\bref}[1]{(\ref{#1})}
 \newcommand{\pd}{\partial}
 \newcommand{\sh}{\textrm{\,sh}}
-\newcommand{\ch}{\textrm{ch}}
+\newcommand{\ch}{\textrm{\,ch}}
+\renewcommand{\Im}{\textrm{Im\,}}
+\renewcommand{\Re}{\textrm{Re\,}}
 \title{Notes on `t Hooft's model}
 \author{Yu-Ping Wang}
 \date{\today}
@@ -191,6 +193,23 @@ The `t Hooft's equation becomes a more simple form.
 \[
 	f_{\alpha}(\nu)\psi_n(\nu) = \frac{i\beta}{\pi}\hat{I}\psi_n(\nu)+ \lambda_n \hat{S}\psi_n(\nu).
 \]
+\subsection{The TQ equations}
+\subsubsection{The equal masses case $(\beta =0)$}
+
+In this section, we shall show that we could recast the `t Hooft's equation into a finite difference equation called the TQ equation. Conversely, any solutions of the TQ equation satisfying certain ``quantization conditions'' is a solution of the `t Hooft's  equation. Let's first consider the equal quark masses case $(\beta =0)$, then generalize it to unequal masses in the next subsection.
+
+First define the $Q$ function.
+\[
+	Q(\nu) = \sh\left(\frac{\pi \nu}{2}\right)f_{\alpha}(\nu)\psi(\nu) = \left[\sh\left(\frac{\pi \nu}{2}\right) + \frac{2\alpha}{\pi}\ch\left(\frac{\pi \nu}{2}\right) \right]\psi(\nu).
+\]
+The equal mass `t Hooft's equation written in terms of $Q$ function is
+\[
+	Q(\nu) = \frac{\pi \lambda}{2}\sh\left(\frac{\pi \nu}{2}\right)\fint_{-\infty}^{\infty} \frac{S(\nu - \nu{}')Q(\nu{}')}{\sh\left(\frac{\pi \nu{}'}{2}\right)f_{\alpha}(\nu{}')}d\nu{}'.
+\]
+We would like to find a difference equation between $Q(\nu)$ and $Q(\nu \pm 2i )$. To calculate $Q(\nu \pm 2i )$, we could not just naively preform the integration of $\nu{}'$ for the equation above with the replacement $ \nu \rightarrow \nu \pm 2i$.
+
+This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2\mathbb{N}i$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles would need to pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms.
+\subsubsection{The unequal masses case $(\beta \neq 0)$}
 \nocite{*}
 \printbibliography
 
