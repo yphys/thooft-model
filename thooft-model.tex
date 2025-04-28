@@ -160,10 +160,10 @@ The most general `t Hooft's equation with unequal quark mass is
 There the variables $x, y$ are $p_{-}/r_{-}$ and $ q_{-}/r_{-}$ respectively, where $p, q$ are the transverse momentum of the quarks while $r$ is the total momentum of the meson. $M^2_n = 2\pi^2 g\lambda_n$ is the meson mass, and $\alpha_i = \pi m_i^2/g^2 -1$ are the are the quark masses, while $g$ being the Yang-Mills coupling.
 
 We shall transform this integral eigenvalue equation to $\nu$-space which is more suitable for complex analysis. $\nu$-space and the original momentum space ($x$-space) are related via the following integral transformation.
-\begin{gather*}
-	\phi(x) = \int_{-\infty}^{\infty} \frac{d\nu}{2\pi}\,  \psi(\nu) \left(\frac{x}{1-x}\right)^{\frac{i\nu}{2}},\\
-	\psi(x) = \int_{-1}^{1} dx \, \frac{\phi(x)}{2x(1-x)} \left(\frac{x}{1-x}\right)^{-\frac{i\nu}{2}}.
-\end{gather*}
+\begin{gather}
+	\phi(x) = \int_{-\infty}^{\infty} \frac{d\nu}{2\pi}\,  \psi(\nu) \left(\frac{x}{1-x}\right)^{\frac{i\nu}{2}},\label{x2nuCordTrans}\\
+	\psi(x) = \int_{-1}^{1} dx \, \frac{\phi(x)}{2x(1-x)} \left(\frac{x}{1-x}\right)^{-\frac{i\nu}{2}}\label{nu2xCordTrans}.
+\end{gather}
 We could compute what each term in the `t Hooft's equation becomes after the integral transformation. This transformation has the essentially diagonalized the potential term while making the kinetic term non-diagonal.
 \begin{gather*}
 	x(1-x)\fint_{0}^{1}dy \frac{\phi_n(y)}{(x-y)^2}  \rightarrow -\frac{\pi}{2}\coth\left(\frac{\pi \nu}{2}\right), \\
@@ -194,7 +194,7 @@ The `t Hooft's equation becomes a more simple form.
 	f_{\alpha}(\nu)\psi_n(\nu) = \frac{i\beta}{\pi}\hat{I}\psi_n(\nu)+ \lambda_n \hat{S}\psi_n(\nu).
 \]
 \subsection{The TQ equations}
-\subsubsection{The equal masses case $(\beta =0)$}
+\subsubsection*{The equal masses case $(\beta =0)$}
 
 In this section, we shall show that we could recast the `t Hooft's equation into a finite difference equation called the TQ equation. Conversely, any solutions of the TQ equation satisfying certain ``quantization conditions'' is a solution of the `t Hooft's  equation. Let's first consider the equal quark masses case $(\beta =0)$, then generalize it to unequal masses in the next subsection.
 
@@ -209,7 +209,44 @@ The equal mass `t Hooft's equation written in terms of $Q$ function is
 We would like to find a difference equation between $Q(\nu)$ and $Q(\nu \pm 2i )$. To calculate $Q(\nu \pm 2i )$, we could not just naively preform the integration of $\nu{}'$ for the equation above with the replacement $ \nu \rightarrow \nu \pm 2i$.
 
 This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2\mathbb{N}i$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles would need to pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms.
-\subsubsection{The unequal masses case $(\beta \neq 0)$}
+\subsubsection*{The unequal masses case $(\beta \neq 0)$}
+\section{Analyticity properties}
+From the $TQ$ equation, we could derive the analyticity properties of wave function $\psi(\nu)$. It contains simple poles located at
+\[
+	\nu_{k}(\alpha + \beta) = \nu_{k}(\alpha_1), \quad  -\nu_{k}(\alpha - \beta) = -\nu_{k}(\alpha_2), \quad k = 1, 2, \cdots
+\]
+We define $\nu_{k}$ to be the solution of the characteristic equation
+\[
+	f_{\alpha}(\nu) = \nu \coth\left(\frac{\pi\nu}{2}\right) + \frac{2\alpha}{\pi} =0.
+\]
+The subscript $k$ denotes the solution in the strip $2(k-1) \leq \Im \nu < 2k$ when $\alpha$ is real and positive. For complex values of $\alpha$, $\nu_{k}(\alpha)$ is determined via analytic continuation from some starting point where $\alpha$ is real and positive. Of course, if $\nu_{k}(\alpha)$ is a solution, then $-\nu_{k}(\alpha)$ is also a solution, sometimes we use the convention $\nu_{-k}(\alpha) = -\nu_{k}(\alpha)$.
+
+The poles listed above are not the only poles, these are called the \emph{primary poles}. While there are also the \emph{descendent poles.}
+\[
+	\nu_{k, n}(\alpha + \beta) = \nu_{k}(\alpha + \beta) + 2ni, \quad
+	\nu_{k, -n}(\alpha - \beta) = \nu_{k}(\alpha - \beta) - 2ni.
+\]
+We use the notation $\nu_{k, n} = \nu_{k} + 2ni$.
+
+Intuitively, these poles structure encodes the asymptotic behavior of $\phi(x)$ in the $x =0 $ and $x =1 $ limit. In particular, if the wave function is in the form
+\[
+	\phi(x) = f(x)x^{\frac{i\alpha}{2}}(1-x)^{\frac{i\beta}{2}}, \quad \textrm{$f(x)$ analytic in $x =0, 1$.}
+\]
+Then the integral transformation \bref{x2nuCordTrans} would generate a series of poles at $\nu = -\alpha + 2ni$ and $\nu = -\beta - 2ni$. $n$ be non-negative integers. The pole structure listed above is a demonstration following asymptotic properties of `t Hooft's wave function.
+\[
+	\phi(x) =
+	\begin{cases}
+		\;x^{\beta_1}     & x \rightarrow 0 \\
+		\;(1-x)^{\beta_2} & x \rightarrow 1 \\
+	\end{cases}, \quad \beta_i\cot\pi \beta_i + \alpha_i =0.
+\]
+
+We know that when we find tune $\alpha, \beta$ such that two poles collide, it correspond to a branching singularity in the spectrum. We call them \emph{pinching singularity.}
+
+Let's consider the equal mass case $\beta =0 $ first. In this case, only primary poles can collide. The collision point is given by when $f_{\alpha}(\nu)$ develops double roots. In other words, the pinching singularities $\alpha^*$ are given by the equations.
+\[
+	f_{\alpha^*}(\nu) =0, \quad f{}'_{\alpha^*}(\nu) =0.
+\]
 \nocite{*}
 \printbibliography
 
