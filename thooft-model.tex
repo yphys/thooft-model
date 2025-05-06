@@ -6,11 +6,13 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{slashed}
+\usepackage{graphicx,caption}
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{esint}
 \usepackage{tikz-feynman}
 \usepackage{lipsum}
+\usepackage{placeins}
 \usepackage{array}
 \hypersetup{
         bookmarksnumbered,
@@ -47,7 +49,7 @@
 
 
 \section{2D QCD}
-\paragraph{}The Lagrangian of two-dimensional QCD with $U(N)$ gauge group with $m$-flavors of Dirac fermions.
+\paragraph{}The Lagrangian of two-dimensional QCD with $U(N)$ gauge group with $m$-flavors of Dirac fermions is
 \[
 	{\cal L} = \frac{1}{4}\textrm{tr}F_{\mu\nu}F^{\mu\nu} - q_{a}\left(i\slashed{D}-m_{a}\right)\overline{q}^{a}, \quad a = 1, \cdots m.
 \]
@@ -61,7 +63,7 @@ Its more convenient to use the light-cone coordinate.
 \[
 	x_{\mu} = (x_{+}, x_{-}), \quad x_{\pm}  = \frac{1}{\sqrt{2}}\left( x_{0}\pm x_{1}\right).
 \]
-The momentum in light-cone coordinate is denote similarly $p_{\pm}=\frac{1}{\sqrt{2}}\left( p_{0}\pm p_{1}\right)$, and the inner product is $a_{\mu}b^{\mu} = a_{+}b_{-} + a_{-}b_{+}$. This means that when raising/lowering the indices, the plus and minus sing needs to be exchanged.
+The momentum in light-cone coordinate is denote similarly as $p_{\pm}=\frac{1}{\sqrt{2}}\left( p_{0}\pm p_{1}\right)$, and the inner product is $a_{\mu}b^{\mu} = a_{+}b_{-} + a_{-}b_{+}$. This means that when raising/lowering the indices, the plus and minus sing needs to be exchanged.
 
 In two-dimensons, we are allowed to choose a gauge of $A_{\mu}$ such that $A_{-} = A^{+}$ =0. We also list out the explicit values of the gamma matrices $\gamma_{\mu}$.
 
@@ -82,9 +84,9 @@ In this gauge, the Lagrangian could be explicit written down
 	{\cal L} = -\frac{1}{2}\textrm{tr}\left(\pd_{-}A_{+}\right)^2 - q_{a}\left(i\gamma_{+}\pd_{-}+ i\gamma_{-}\pd_{+} + m_{a} +g\gamma_{-}\overline{A}_{+} \right)\overline{q}^{a}.
 \]
 
-The advantage of choosing the light-cone gauge is that there are no direct interactions between the gluons. Making the Feynman diagrams much simpler.  Since $A_{\mu}$ is a $U(N)$ matrix, we could use the double line notation for the gluon propagators.
+The advantage of choosing the light-cone gauge is there are no direct interactions between the gluons. Making the Feynman diagrams much simpler.  Since $A_{\mu}$ is a $U(N)$ matrix, we could use the double line notation for the gluon propagators.
 
-The Feynman rules are:
+The Feynman rules are the following:
 \begin{center}
 	\begin{tabular}{m{0.3\textwidth} m{0.3\textwidth} m{0.3\textwidth}}
 		\begin{tikzpicture}[baseline={([yshift=-1.5ex]i1.base)}]
@@ -99,7 +101,7 @@ The Feynman rules are:
 				(i4) -- [fermion] (i2),
 				};
 			\end{feynman}
-		\end{tikzpicture}  & \( -\frac{i}{k_{-}^2}\)                                                                    & Gluon propagator                                                        \\[1em]
+		\end{tikzpicture}  & \( -\frac{i}{k_{-}^2}\)                                                                     & Gluon propagator                                                        \\[1em]
 		\begin{tikzpicture} [baseline={([yshift=-1.5ex]i1.base)}]
 			\begin{feynman}
 				\vertex at (0, 1) (i1) {\(i\)} ;
@@ -110,8 +112,8 @@ The Feynman rules are:
 				(i1) -- [fermion] (i3),
 				};
 			\end{feynman}
-		\end{tikzpicture} & \( \frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} -m_{a} +i\epsilon}\)                         &                                                                          \\ [1em]
-		                                                     & = \(\frac{\gamma_{+}p_{-} + \gamma_{-}p_{+} + m_{a}}{2p_{+}p_{-} - m_{a}^2 + i\epsilon} \) & Fermion propagator                    \\[1em]
+		\end{tikzpicture} & \( \frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} -m_{a} -i\epsilon}\)                          &                                                                          \\ [1em]
+		                                                     & = \(i\frac{\gamma_{+}p_{-} + \gamma_{-}p_{+} + m_{a}}{2p_{+}p_{-} - m_{a}^2 - i\epsilon} \) & Fermion propagator                    \\[1em]
 		\begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
 			\begin{feynman}
 				\vertex at (0, 0) (i1) ;
@@ -126,7 +128,7 @@ The Feynman rules are:
 				};
 			\end{feynman}
 		\end{tikzpicture}
-		                                                     & \(  ig \gamma_{-} \)                                                                       & Gluon-quark interaction               \\[3em]
+		                                                     & \(  ig \gamma_{-} \)                                                                        & Gluon-quark interaction               \\[3em]
 		\begin{tikzpicture}[baseline={([yshift=-5.5ex]i1.base)}]
 			\begin{feynman}
 				\vertex at (0, 0) (i1) ;
@@ -143,23 +145,108 @@ The Feynman rules are:
 				};
 			\end{feynman}
 		\end{tikzpicture}
-		                                                     & \(-\frac{i}{N}g\gamma_{-}\)                                                                & Higher order gluon-quark interaction.
+		                                                     & \(-\frac{i}{N}g\gamma_{-}\)                                                                 & Higher order gluon-quark interaction.
 	\end{tabular}
 \end{center}
 
-We are interested in the large-$N$ limit. By the standard argument form `t Hooft, the planar graphs with no fermion loops are leading order.
+We are interested in the large-$N$ limit. By the standard argument form `t Hooft, the planar graphs with no fermion loops are leading order, and we shall only consider `t Hooft model with one fermions and drop the index $a$.
 
-We shall first study the fermion propagators in the leading order of large-$N$ limit.
+We shall first study the fermion propagators in the leading order of large-$N$ limit. As illustrated in figure \ref{fig1}, if we denote $i\Gamma(p)$ as the sum of all one-particle irreducible diagrams, the fermion propagator $S(p)$ is the sum of all series of $\Gamma(p)$.
+\[
+	iS(p) = i\Delta(p) + i\Delta(p) i\Gamma(p)i\Delta(p) + \cdots = -\frac{i}{\gamma_{+}p_{-}+ \gamma_{-}p_{+} - m-i\epsilon + \Gamma(p) }.
+\]
+where $i\Delta(p) = \frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} - m + i\epsilon} $ is the free fermion propagator.
 
+On the other hand, following figure \ref{fig2}, we could see that  all the planar, 1-particle irreducible diagrams could be organized a way that $\Gamma(p)$ satisfy the following bootstrap relation.
+\[
+	i\Gamma(p)= -iS^{-1}(p) - i(\slashed{p} + m_{a}) = i\frac{g^{2}N}{\pi^{2}}\int dk_{+}dk_{-} \frac{1}{k_{-}^{2}}iS(k + p).
+\]
+
+\FloatBarrier
+\begin{figure}[h]
+	\begin{subfigure}[t]{.6\textwidth}
+		\centering
+		\captionsetup{width=.8\linewidth}
+		\includegraphics[width=0.9\linewidth]{figures/fig1.pdf}
+		\caption{The fermion propagators is the sum of series of one particle irreducible self-energy $\Gamma(p)$.\label{fig1}}
+	\end{subfigure}%
+	\hfill
+	\begin{subfigure}[t]{.4\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{figures/fig2.pdf}
+		\caption{The bootstrap equation that $\Gamma(p)$ obeys. \label{fig2}}
+	\end{subfigure}
+\end{figure}
+
+Now, observe that since all the vertices are proportional to $\gamma_{-}$, this means that the any Feynman diagrams, written as a products of propagators and vertices, would have the following numerators.
+\[
+	(\gamma_{+}p_{1-}+ \gamma_{-}p_{1+} + m)i\gamma_{-}g(\gamma_{+}p_{2-}+ \gamma_{-}p_{2+} + m)i\gamma_{-}g\cdots = \gamma_{-}\left(p_{1-} + m\right)g\left(p_{2-} + m\right)g\cdots .
+\]
+We have just use the simple fact that $\gamma_{\pm}\gamma_{\mp}\gamma_{\pm} = \gamma_{\pm}$ and $\gamma_{\pm}^2= 0$. All diagrams are proportional to $\gamma_{-}$, thus we could just make the following substitutions
+\[
+	\frac{i}{\gamma_{+}p_{-} + \gamma_{-}p_{+} - m - i\epsilon}\rightarrow\frac{ip_{-}}{p_{+}p_{-} - m^2 - i\epsilon}, \quad ig\gamma_{-}\rightarrow ig.
+\]
+Also the self energy $\Gamma(p)$ is proportional to $\gamma_{-}$, the full propagator $S(p)$ could be rewritten as
+\[
+	S(p) = -\frac{i}{\gamma_{+}p_{-} + \gamma_{-}[p_{+} + \Gamma(p)] -m} \rightarrow
+	-\frac{ip_{-}}{2p_{+}p_{-} + 2p_{-}\Gamma(p) -m^{2} -i\epsilon}.
+\]
+
+The bootstrap equation for $\Gamma(p)$ becomes
+\[
+	\Gamma(p) = -\frac{ig^2N}{(2\pi)^{2}}\int\frac{dk_{+}dk_{-}}{k_{-}^{2}}\frac{\left(k_{-} + p_{-}\right)}{2\left[(k_{+} +p_{+})+ \Gamma(k+p)\right](k_{-}+ p_{-}) - m^{2} -i\epsilon }.
+\]
+If we change the integration coordinate $k_{+} + p_{+}\rightarrow k_{+}$ on the right hand side in the equation above, the self energy $\Gamma(p)$ becomes independent of  $p_{+}$.
+\[
+	\Gamma(p_{-}) =-\frac{ig^2N}{(2\pi)^{2}}\int_{-\infty}^{\infty} \frac{dk_{-}(k_{-} + p_{-})}{k_{-}^{2}} \int_{-\infty}^{\infty} \frac{dk_{+}}{2(k_{-} + p_{-})k_{+} + 2\Gamma(k_{-} + p_{-})(k_{-}+p_{-})-m^{2} -i\epsilon}.
+\]
+The $k_{-}$ integral is divergent, so we regulated it with a UV regulator $\Lambda$, and using the following scheme.
+$\int_{-\infty}^{\infty}dk_{+} \rightarrow \int_{-\Lambda}^{\Lambda}dk_{+}$.
+
+In the limit $\Lambda\rightarrow\infty$, this integral becomes
+\begin{equation}\label{selfenergyintegral}
+	\frac{1}{2|k_{-} + p_{-}|}\ln \left[\frac{2(k_{-} + p_{-})\Lambda + 2\Gamma(k_{-} + p_{-})(k_{-}+p_{-})-m^{2}}{-2(k_{-} + p_{-})\Lambda + 2\Gamma(k_{-} + p_{-})(k_{-}+p_{-})-m^{2}}\right]\rightarrow \frac{i\pi}{2|k_{-} +p_{-}|}.
+\end{equation}
+Most importantly, the dependence on $\Gamma(p)$ in the R.H.S of the bootstrap equation drop out, and $\Gamma(p)$ becomes the following integral.
+\[
+	\Gamma(p) = \frac{gN^{2}}{8\pi}\int_{-\infty}^{\infty} \frac{dk_{-}}{k_{-}^{2}}\textrm{sgn}(k_{-}+p_{-}).
+\]
+
+Now, the integral above becomes IR divergent, so we just as before, we define an IR regulator $\lambda$ and omit the integral region $|k_{-}| < \lambda$.
+\[
+	\int_{-\infty}^{\infty} dk_{-}\rightarrow \int_{-\infty}^{-\lambda}dk_{-} + \int_{\lambda}^{\infty}dk_{-}.
+\]
+The integral \bref{selfenergyintegral} needs to be evaluated in three different values of $p_{-}$. If $-p_{-} \leq -\lambda$,
+\begin{gather*}
+	\Gamma(p_{-})=\frac{g^{2}N}{8\pi}\left[\int_{-\infty}^{-p_{-}}-\frac{dk_{-}}{k_{-}^{2}} + \int_{-p_{-}}^{-\lambda} \frac{dk_{-}}{k_{-}^{2}}+\int_{\lambda}^{\infty} \frac{dk_{-}}{k_{-}^2}\right]\\
+	= \frac{igN^{2}}{8\pi}\left[\frac{1}{\lambda}-\frac{1}{p_{-}}\right].
+\end{gather*}
+If $-p \geq \lambda$
+\begin{gather*}
+	\Gamma(p_{-}) = \frac{g^{2}N}{8\pi}\left[-\int_{-\infty}^{-\lambda} \frac{dk_{-}}{k_{-}^{2}} -\int_{\lambda}^{-p_{-}} \frac{dk_{-}}{k_{-}^{2}}+ \int_{-p_{-}}^{\infty} \frac{dk_{-}}{k_{-}^{2}}\right] \\
+	= \frac{ig^{2}N}{8\pi}\left[-\frac{1}{\lambda}-\frac{1}{p_{-}}\right].
+\end{gather*}
+If $-\lambda < -p_{-} < \lambda$,
+\[
+	\Gamma(p_{-})= \frac{gN^{2}}{8\pi}\left[-\int_{-\infty}^{\lambda} \frac{dk_{-}}{k_{-}^{2}}+ \int_{\lambda}^{\infty} \frac{dk_{-}}{k^{2}_{-}}\right]= 0.
+\]
+Therefore, in the $\lambda\rightarrow0$ limit, $\Gamma(p_{-})$ is
+\[
+	\Gamma(p_{-})= \frac{gN^{2}}{8\pi}\left[\frac{\textrm{sgn}(p_{-})}{\lambda}-\frac{1}{p_{-}}\right],
+\]
+and the full fermion propagator is
+\[
+	S(p)= \frac{ip_{-}}{2p_{+}p_{-}+gN^{2}(|p_{-}|/\lambda - 1)/8\pi -m^{2}-i\epsilon} .
+\]
+
+In particular, in the $\lambda\rightarrow 0$ limit, the pole of this propagator $p^{2} = -m^{2} + gN^{2}\left(|p_{-}|/\lambda -1 \right)/8\pi$ goes to infinity, it means that there are no single fermion asymptotic states in 2D QCD. The fermions must be confined.
 \section{The `t Hooft's equation}
 The most general `t Hooft's equation with unequal quark mass is
 \[
 	\left(\frac{\alpha_1}{x} + \frac{\alpha_2}{1-x}\right)\phi_n(x) - \fint_{0}^{1}dy \frac{\phi_n(y)}{(x-y)^2} = 2\pi^2 \lambda_n\, \phi_n(x),
 \]
 
-There the variables $x, y$ are $p_{-}/r_{-}$ and $ q_{-}/r_{-}$ respectively, where $p, q$ are the transverse momentum of the quarks while $r$ is the total momentum of the meson. $M^2_n = 2\pi^2 g\lambda_n$ is the meson mass, and $\alpha_i = \pi m_i^2/g^2 -1$ are the are the quark masses, while $g$ being the Yang-Mills coupling.
-
-We shall transform this integral eigenvalue equation to $\nu$-space which is more suitable for complex analysis. $\nu$-space and the original momentum space ($x$-space) are related via the following integral transformation.
+There the variables $x, y$ are $p_{-}/r_{-}$ and $ q_{-}/r_{-}$ respectively, where $p, q$ are the transverse momentum of the quarks while $r$ is the total momentum of the meson. $M^2_n = 2\pi^2 g\lambda_n$ information.
 \begin{gather}
 	\phi(x) = \int_{-\infty}^{\infty} \frac{d\nu}{2\pi}\,  \psi(\nu) \left(\frac{x}{1-x}\right)^{\frac{i\nu}{2}},\label{x2nuCordTrans}\\
 	\psi(x) = \int_{-1}^{1} dx \, \frac{\phi(x)}{2x(1-x)} \left(\frac{x}{1-x}\right)^{-\frac{i\nu}{2}}\label{nu2xCordTrans}.
@@ -208,7 +295,7 @@ The equal mass `t Hooft's equation written in terms of $Q$ function is
 \]
 We would like to find a difference equation between $Q(\nu)$ and $Q(\nu \pm 2i )$. To calculate $Q(\nu \pm 2i )$, we could not just naively preform the integration of $\nu{}'$ for the equation above with the replacement $ \nu \rightarrow \nu \pm 2i$.
 
-This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2\mathbb{N}i$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles would need to pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms.
+This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2ki$, where $k = 1, 2, \cdots$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles that comes from the integrand would pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms.
 \subsubsection*{The unequal masses case $(\beta \neq 0)$}
 \section{Analyticity properties}
 From the $TQ$ equation, we could derive the analyticity properties of wave function $\psi(\nu)$. It contains simple poles located at
@@ -241,7 +328,7 @@ Then the integral transformation \bref{x2nuCordTrans} would generate a series of
 	\end{cases}, \quad \beta_i\cot\pi \beta_i + \alpha_i =0.
 \]
 
-We know that when we find tune $\alpha, \beta$ such that two poles collide, it correspond to a branching singularity in the spectrum. We call them \emph{pinching singularity.}
+We know that when we fine-tune $\alpha, \beta$ such that two poles collide, it correspond to a branching singularity in the spectrum. We call them \emph{pinching singularity.}
 
 Let's consider the equal mass case $\beta =0 $ first. In this case, only primary poles can collide. The collision point is given by when $f_{\alpha}(\nu)$ develops double roots. In other words, the pinching singularities $\alpha^*$ are given by the equations.
 \[
