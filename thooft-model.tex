@@ -151,6 +151,7 @@ The Feynman rules are the following:
 
 We are interested in the large-$N$ limit. By the standard argument form `t Hooft, the planar graphs with no fermion loops are leading order, and we shall only consider `t Hooft model with one fermions and drop the index $a$.
 
+\subsection{Quark Propagators}
 We shall first study the fermion propagators in the leading order of large-$N$ limit. As illustrated in figure \ref{fig1}, if we denote $i\Gamma(p)$ as the sum of all one-particle irreducible diagrams, the fermion propagator $S(p)$ is the sum of all series of $\Gamma(p)$.
 \[
 	iS(p) = i\Delta(p) + i\Delta(p) i\Gamma(p)i\Delta(p) + \cdots = -\frac{i}{\gamma_{+}p_{-}+ \gamma_{-}p_{+} - m-i\epsilon + \Gamma(p) }.
@@ -240,6 +241,40 @@ and the full fermion propagator is
 \]
 
 In particular, in the $\lambda\rightarrow 0$ limit, the pole of this propagator $p^{2} = -m^{2} + gN^{2}\left(|p_{-}|/\lambda -1 \right)/8\pi$ goes to infinity, it means that there are no single fermion asymptotic states in 2D QCD. The fermions must be confined.
+
+\subsection{The meson propagator}
+\paragraph{}
+Having derived the quark propagators in the large-$N$ limit, we shall now move on to the quark-antiquark propagators. (i.e. The meson propagators)
+
+The meson propagators contains two fermions as the external states, and we shall denote it as $T_{\alpha\beta;\gamma\delta}(p, p{}';r)$. $p$ and $p{}'$ are incoming and outgoing momentum of the first quark, while $r$ is the transverse momentum.
+In the large-$N$ limit, it satisfy the bootstrap equation. (i.e. The Bethe-Salpeter equation). For a graphical illustration of the bootstrap equation, see figure \ref{fig3}
+\begin{gather*}
+    T_{\alpha\beta;\gamma\delta}(p, p{}';r) = \frac{ig^{2}}{(p-p{}')^{2}}(\gamma)_{\alpha\gamma}(\gamma)_{\beta\delta} +\\
+    ig^{2}N\int\frac{d^{2}k}{(2\pi)^{2}}\frac{(\gamma_{-})_{\alpha\epsilon}(\gamma_{-})_{\beta\lambda}}{(k_{-}-p_{-})^{2}}S_{\epsilon\mu}(k)S_{\lambda\nu}(k-r)T_{\mu\nu;\gamma\delta}(k, p{}';r).
+\end{gather*}
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.9\linewidth]{figures/fig3.pdf}
+    \caption{The bootstrap equation for $T_{\alpha\beta;\gamma\delta}(p, p{}';r)$. \label{fig3}}
+\end{figure}
+
+Here, $S_{\alpha\beta}(p)$ is the full quark propagator we derived in the previous section. As we have discussed previously, the quark propagator is proportional to $(\gamma_{-})_{\alpha\beta}$. Similarly, $T_{\alpha\beta;\gamma\delta}$ is proportional to $(\gamma_{-})_{\alpha\gamma}(\gamma_{-})_{\beta\delta}$. Therefore, we shall define
+\[ 
+    S_{\alpha\beta}(p) \equiv (\gamma_{-})_{\alpha\beta}S_{E}(p),\quad  T_{\alpha\beta;\gamma\delta}(p, p{}';r) \equiv 2(\gamma_{-})_{\alpha\gamma}(\gamma_{-})_{\beta\delta}T(p, p{}';r).
+\] 
+
+Define the function $\phi(p_{-}, p{}'; r)$ as 
+\[ 
+    \phi(p_{-}, p{}'; r) \equiv \int dp_{+} S_{E}(p)S_{E}(p-r)T(p, p{}'; r).
+\] 
+The Bethe-Salpeter equation simplifies to 
+\[ 
+    T(p, p{}'; r) = \frac{ig^2}{(p_{-}-p{}'_{-})^{2}} + \frac{ig^{2}N}{\pi^{2}}\int dk_{-} \frac{\phi(p, p{}';r)}{(k_{-}-p_{-})^{2}}.
+\]
+The equation on the right hand side is independent of $p_{-}$, thus so is the meson propagator. 
+
+The integral $\phi$ could be evaluated. could be evaluated.
 \section{The `t Hooft's equation}
 The most general `t Hooft's equation with unequal quark mass is
 \[
