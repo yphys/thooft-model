@@ -39,6 +39,8 @@
 \newcommand{\ch}{\textrm{\,ch}}
 \renewcommand{\Im}{\textrm{Im\,}}
 \renewcommand{\Re}{\textrm{Re\,}}
+\newcommand{\yp}[1]{{\color{purple} #1}}
+\DeclareMathOperator*{\Res}{Res}
 \title{Notes on `t Hooft's model}
 \author{Yu-Ping Wang}
 \date{\today}
@@ -330,7 +332,34 @@ The equal mass `t Hooft's equation written in terms of $Q$ function is
 \]
 We would like to find a difference equation between $Q(\nu)$ and $Q(\nu \pm 2i )$. To calculate $Q(\nu \pm 2i )$, we could not just naively preform the integration of $\nu{}'$ for the equation above with the replacement $ \nu \rightarrow \nu \pm 2i$.
 
-This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2ki$, where $k = 1, 2, \cdots$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles that comes from the integrand would pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms.
+This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2ki$, where $k = 1, 2, \cdots$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles that comes from the integrand would pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms. 
+
+More specifically, we denote $\tilde{S}$ as the deformed integral, and $\hat{S}f$ is the naive direct integration we defined earlier. \yp{As shown in figure ?, we have } 
+\[ 
+   \tilde{S}f(\nu+2i)  = \left(-i\pi\Res_{x = -2i}\frac{\pi x}{\sh \left(\pi x/ 2\right)} \right) f(\nu) + \hat{S}f(\nu+ 2i) = 2\pi f(\nu) + \hat{S}f(\nu+ 2i).
+\] 
+Similarly, the analytically continued integral  $\tilde{S}(\nu-2i)$ equals 
+\[ 
+    \tilde{S}(\nu-2i) =  \left(\pi i \Res_{x = 2i} \frac{\pi x}{\sh (\pi x/2)}\right) f(\nu) + \hat{S}f(\nu-2i) =2\pi f(\nu) +  \hat{S}f(\nu-2i) .
+\] 
+\yp{See figure ? for the illustration of deformed contour.} One technical assumption we need for the two equation above to hold is that $Q(\nu )$ must decay sufficiently fast in the $|\Re \nu| \rightarrow \infty  $ limit so there is no boundary terms. In particular, $\psi(\nu ) = O(e^{\epsilon \nu }), \Re \nu \rightarrow \infty $ for any $\epsilon > 0$.
+
+If we define  $P(\nu) \equiv \frac{Q(\nu )}{f_{\alpha }(\nu )\sh\left(\frac{\pi x}{2}\right)}$, we have 
+\[ 
+    Q(\nu \pm 2i ) = -\lambda \sh \left(\frac{\pi x}{2}\right)\left[\hat{S}P(\nu \pm 2i) + 2\pi P(\nu )\right] .
+\]
+
+On the other hand, observe that 
+\begin{align*}
+  &\hat{S}\left[P(\nu +2i) + P(\nu -2i) + 2P(\nu )\right] =\\ 
+  &\int_{-\infty}^{\infty} 
+   P(\nu {}')\left[S(\nu -\nu{}' +2i) + S(\nu -\nu{}' +2i) + 2S(\nu -\nu {}')\right] d\nu =0.\\
+\end{align*}
+Recall that $S(\nu ) = \frac{\pi \nu }{2 \sh (\pi \nu /2)}$. Putting everything together, we arrived at the TQ equation.
+\[ 
+    Q(\nu +2i) + Q(\nu -2i) -2Q(\nu ) = -4\pi \lambda \sh\left(\frac{\pi \nu }{2}\right)P(\nu ) = -\frac{4\pi \lambda }{f_{\alpha }(\nu )}Q(\nu ).
+    \] 
+It is a difference equation between $Q(\nu \pm 2i)$ and $Q(\nu )$. Although in the derivation of this equation we assume that $|\Im \nu| \leq 2$, a more careful analysis should show that the TQ equation holds for arbitrary $\nu $. \yp{Is this true?}.
 \subsubsection*{The unequal masses case $(\beta \neq 0)$}
 \section{Analyticity properties}
 From the $TQ$ equation, we could derive the analyticity properties of wave function $\psi(\nu)$. It contains simple poles located at
