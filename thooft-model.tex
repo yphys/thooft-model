@@ -324,9 +324,9 @@ The `t Hooft's equation becomes a more simple form.
 In this section, we shall show that we could recast the `t Hooft's equation into a finite difference equation called the TQ equation. Conversely, any solutions of the TQ equation satisfying certain ``quantization conditions'' is a solution of the `t Hooft's  equation. Let's first consider the equal quark masses case $(\beta =0)$, then generalize it to unequal masses in the next subsection.
 
 First define the $Q$ function.
-\[
+\begin{equation}\label{qdef}
 	Q(\nu) = \sh\left(\frac{\pi \nu}{2}\right)f_{\alpha}(\nu)\psi(\nu) = \left[\sh\left(\frac{\pi \nu}{2}\right) + \frac{2\alpha}{\pi}\ch\left(\frac{\pi \nu}{2}\right) \right]\psi(\nu).
-\]
+\end{equation}
 The equal mass `t Hooft's equation written in terms of $Q$ function is
 \[
 	Q(\nu) = \frac{\pi \lambda}{2}\sh\left(\frac{\pi \nu}{2}\right)\fint_{-\infty}^{\infty} \frac{S(\nu - \nu{}')Q(\nu{}')}{\sh\left(\frac{\pi \nu{}'}{2}\right)f_{\alpha}(\nu{}')}d\nu{}'.
@@ -343,7 +343,7 @@ Similarly, the analytically continued integral  $\tilde{\cal S}(\nu-2i)$ equals
 \[ 
     \tilde{\cal S}(\nu-2i) =  \left(\pi i \Res_{x = 2i} \frac{\pi x}{\sh (\pi x/2)}\right) f(\nu) + \hat{\cal S}f(\nu-2i) =2\pi f(\nu) +  \hat{\cal S}f(\nu-2i) .
 \] 
-\yp{See figure ? for the illustration of deformed contour.} One technical assumption we need for the two equation above to hold is that $Q(\nu )$ must decay sufficiently fast in the $|\Re \nu| \rightarrow \infty  $ limit so there is no boundary terms. In particular, $\psi(\nu ) = O(e^{\epsilon \nu }), \Re \nu \rightarrow \infty $ for any $\epsilon > 0$.
+\yp{See figure ? for the illustration of deformed contour.} One technical assumption we need for the two equation above to hold is that $Q(\nu )$ must decay sufficiently fast in the $|\Re \nu| \rightarrow \infty  $ limit so there is no boundary terms. In particular, $Q(\nu ) = O(e^{\epsilon |\nu| }), \; \Re \nu \rightarrow \infty $ for any $\epsilon > 0$.
 
 If we define  $P(\nu) \equiv \frac{Q(\nu )}{f_{\alpha }(\nu )\sh\left(\frac{\pi x}{2}\right)}$, we have 
 \[ 
@@ -400,7 +400,7 @@ We get,
 \end{align*}
 Putting everything together, we get the TQ equation for unequal quark mass.
 \begin{align*}
-  & Q(\nu + 2i) + Q(\nu -2i )- 2Q(\nu )  = -\frac{4\beta }{\pi }\left[P(\nu -2i) -4P(\nu +2i)\right]  -4\pi \lambda \sh \left(\frac{\pi \nu }{2}\right)P(\nu ).\\[0.5em]
+  & Q(\nu + 2i) + Q(\nu -2i )- 2Q(\nu )  = -\frac{4\beta }{\pi }\left[P(\nu -2i) - P(\nu +2i)\right]  -4\pi \lambda \sh \left(\frac{\pi \nu }{2}\right)P(\nu ).\\[0.5em]
   \Rightarrow & \left[1- \frac{4\beta }{\pi }\frac{\th \left(\pi \nu /2\right)}{\frac{2\alpha }{\pi }\th\left(\pi \nu /2\right) -\nu -2i}\right]Q(\nu + 2i) 
 +  \left[1 + \frac{4\beta }{\pi }\frac{\th \left(\pi \nu /2\right)}{\frac{2\alpha }{\pi }\th\left(\pi \nu /2\right) -\nu +2i}\right]Q(\nu -  2i) \\
   = & -4\pi \lambda \frac{\th \left(\pi \nu /2\right)}{\frac{2\alpha }{\pi }\th \left(\pi \nu /2\right) + \nu } Q(\nu ).\\[0.5em]
@@ -414,7 +414,101 @@ In the last equation, we defined
     \end{cases}.
 \] 
 For simpler notation.
+\subsection{The Fredholm integral equations.}
+\paragraph{}
+In the previous equation, we see that if $\psi (\nu )$  satisfy the 't Hooft equation, we could define the $Q(\nu )$ via \bref{qdef}, and it will satisfy the TQ equation. 
+In this section, we shall show the converse statement. Given a solution of TQ equation with some suitable analyticity properties we shall describe shortly, then the corresponding $\psi (\nu ) \equiv Q(\nu )/(\sh(\pi \nu /2)f_{\alpha }(\nu ))$ would satisfy the Fredholm integral equation, which is just the 't Hooft equation with a specific kind of inhomogeneous part.
+\begin{equation}\label{fredholmeq}
+   f_{\alpha }(\nu )\psi (\nu )= \frac{i\beta }{\pi }\hat{{\cal{I}}}\psi (\nu ) + \lambda \hat{{\cal{S}}}\psi (\nu ) + \frac{q_{+}(\lambda )\nu + q_{-}(\lambda )}{\sh(\pi \nu /2)}, 
+\end{equation}
+where $q_{\pm }$ are constants depending on the values of $Q(0)$ and $Q(\pm2i)$.
+In particular for $\beta =0 $, 
+\[ 
+   q_{+}(\lambda )  = \frac{i}{4}\left[Q(-2i) - Q(2i)\right], \quad q_{-}(\lambda ) = Q(0).
+\] 
 
+Therefore, for the equal mass case we need the solution $Q(0)$ to vanish for odd wave function $\psi$, while $Q(2i)$ to vanish for even $\psi $. (remember that $Q$ and $\psi $ have opposite parity.) The vanishing of $Q$ at certain points acts as a ``quantization condition'' for the TQ equation. Only for certain $\lambda$ are this condition able to be satisfied. These $\lambda_{n}$ correspond to the spectrum of 't Hooft model.
+
+We shall derive the Fredholm equation for $\beta =0$, while leaving the more general case for later. \yp{Later subsection?}.
+
+Our assumption on the properties of the solution of TQ equations are 
+\begin{enumerate}
+  \item  $Q(\nu )$ must not grow faster then any exponential in the $|\Re \nu| \rightarrow \infty $ limit. In other words,
+\[ 
+    Q(\nu ) = {\cal{O}}\left(e^{\epsilon |\nu |}\right), \quad \textrm{For any $\epsilon >0$.}
+\] 
+  \item $Q(\nu )$ must be analytic on the $|\Im \nu| < 2 $ sheet.
+\end{enumerate}
+If those two conditions are satisfied, then $Q$ will satisfy the Fredholm equation.
+
+To prove this, let's define another integral operator.
+\[ 
+    \hat{{\cal{K}}}f(\nu ) = \fint_{-\infty}^{\infty} S(\nu {}'-\nu ) \frac{f(\nu{}' )}{\sh \left(\pi \nu{}'/2\right)}d\nu {}'.
+\] 
+Recall that $S(x) = \frac{\pi x}{\sh(\pi x/2)}$.
+
+We shall act the integral operator $\hat{{\cal{K}}}$ on both side to TQ equation. Before doing that,let's try to evaluate $\hat{{\cal{K}}}\left[Q(\nu \pm 2i)\right]$\footnote{$Q(\nu \pm 2i )$ is being acted on $\hat{{\cal{K}}}$, don't confuse it with $\hat{{\cal{K}}}Q(\nu \pm 2i)$, which means evaluate $\hat{{\cal{K}}}Q$ at $\nu \pm  2i$.}.
+
+\begin{align*}
+  \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  = &  \fint_{-\infty}^{\infty} \frac{\pi (\nu -\nu{}' )}{2\sh\left(\pi (\nu -\nu{}') /2\right)} \frac{Q(\nu{}' + 2i)}{\sh\left(\pi \nu {}'/2\right)}d\nu {}'\\
+  = & \fint_{-\infty + 2i}^{\infty + 2i} \frac{\pi (\nu -\nu{}'+2i )}{2\sh\left[\pi (\nu -\nu {}' + 2i) /2\right]} \frac{Q(\nu{}')}{\sh\left[\pi \left(\nu {}' -2i\right)/2\right]}d\nu {}'.
+\end{align*}
+In the second line, we simply changed the integration variable form $\nu \rightarrow \nu -2i$. Now the integration contour has shifted to the line $\left( -\infty + 2i, \; \infty +2i\right)$, we shall move the contour back to the real line $\left(-\infty \;,\; \infty \right)$ picking up any poles appeared in the integrand. \yp{See figure ? for illustration.}
+
+Since $Q(\nu )$ is analytic on the strip $|\Im \nu| < 2$, the only possible place the poles could must come from either the $1/\sh(\pi \nu /2)$ factor or the $S(\nu -\nu {}')$ factor. They are located at 
+\[ 
+    \begin{cases}
+      \nu{}'_{p} = 2i\mathbb{Z} \\
+      \nu{}'_{p} = \nu \pm 2i\mathbb{N} \\
+    \end{cases}.
+\]
+
+Let's for a moment assume that $\Im \nu > 0$, then $\hat{{\cal{K}}}\left[Q(\nu + 2i)\right] $ would have a residue therms at $\nu{}' = \nu $ and two half-residue terms at $\nu =0$ and $\nu =2i$ respectively. \yp{(See figure ?)}
+
+\begin{align*}
+  \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  =& -2\pi i \Res_{\nu{}'=\nu } \left[\frac{\pi (\nu -\nu {}' +2i)}{2\sh \frac{\pi }{2}\left(\nu -\nu {}'+2i\right)}\right] \left\{ \frac{Q(\nu {})}{\sh \frac{\pi }{2}\left(\nu -2i\right)}\right\}\\ 
+  - & \pi i \Res_{\nu = 2i}\left[\frac{1}{\sh\frac{\pi }{2}(\nu {}'-2i)}\right]\left.\left\{Q(\nu {}')\frac{\pi (\nu -\nu {}' + 2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}'+ 2i)}\right\}\right|_{\nu {}'=2i}\\
+  - & \pi i \Res_{\nu = 0}\left[\frac{1}{\sh\frac{\pi }{2}(\nu {}'-2i)}\right]\left.\left\{Q(\nu {}')\frac{\pi (\nu -\nu {}' + 2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}'+ 2i)}\right\}\right|_{\nu {}'=0}\\
+  + & \int_{-\infty}^{\infty} \frac{\pi (\nu -\nu {}' + 2i)}{2\sh \frac{\pi }{2}(\nu -\nu {}' + 2i)}\frac{Q(\nu {}')}{\sh \frac{\pi }{2}(\nu {}' -2i)}d\nu {}',
+\end{align*}
+or 
+\begin{align}
+  \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  =& 4\pi \frac{Q(\nu )}{\sh (\pi \nu /2)}-i\pi \frac{\nu }{\sh(\pi \nu /2)}Q(2i) - i\pi \frac{\nu + 2i}{\sh (\pi \nu /2)}Q(0)\nonumber \\
+  + & \int_{-\infty}^{\infty} \frac{\pi (\nu -\nu {}' + 2i)}{2\sh \frac{\pi }{2}(\nu -\nu {}')}\frac{Q(\nu {}')}{\sh(\pi \nu{}' /2)}d\nu {}'. \label{khatQp}
+\end{align}
+
+Now, let's try to evaluate $\hat{{\cal{K}}}\left[Q(\nu -2i)\right] $. We could do the same trick as before, by changing the integration variable from $\nu{}'$ to $\nu{}'+ 2i$, we have.
+\begin{align*}
+  \hat{{\cal{K}}}\left[Q(\nu - 2i)\right]  = &  \fint_{-\infty}^{\infty} \frac{\pi (\nu -\nu{}' )}{2\sh\left(\pi (\nu -\nu{}') /2\right)} \frac{Q(\nu{}' - 2i)}{\sh\left(\pi \nu {}'/2\right)}d\nu {}'\\
+  = & \fint_{-\infty - 2i}^{\infty  - 2i} \frac{\pi (\nu -\nu{}'-2i )}{2\sh\left[\pi (\nu -\nu {}' - 2i) /2\right]} \frac{Q(\nu{}')}{\sh\left[\pi \left(\nu {}' +2i\right)/2\right]}d\nu {}'.
+\end{align*}
+Again, shifting the integration contour from $\left(-\infty -2i\;,\;\infty -2i\right)$ back to the real line, and picking up any residue terms coming from the region $ -2 \leq \Im \nu \leq 0 $. This time, there are only two half-residue terms, coming from the contribution of $\nu{}' = -2i$ and $\nu = 0$.
+
+\begin{align*}
+  \hat{{\cal{K}}}\left[Q(\nu -2i)\right] = & \pi i \Res_{\nu {}' =-2i}\left[\frac{1}{\sh \frac{\pi }{2}(\nu{}'+ 2i)}\right] \left.\left\{Q(\nu {}')\frac{\pi (\nu -\nu {}' -2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}'-2i)}\right\} \right|_{\nu {}'=-2i}\\
+  + & \pi i \Res_{\nu {}' =0}\left[\frac{1}{\sh \frac{\pi }{2}(\nu{}'+ 2i)}\right] \left.\left\{Q(\nu {}')\frac{\pi (\nu -\nu {}' -2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}'-2i)}\right\} \right|_{\nu {}'=0}\\
+  + &\int_{-\infty}^{\infty}  \frac{\pi (\nu -\nu {}' -2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}' -2i)}\frac{Q(\nu {}')}{\sh(\pi [\nu {}' + 2i]/2)}d\nu {}', 
+\end{align*}
+or 
+\begin{align}
+  \hat{{\cal{K}}}\left[Q(\nu -2i)\right] = & i\pi \frac{\nu }{\sh (\pi \nu /2)}Q(-2i) + 
+  i\pi \frac{\nu -2i}{\sh(\pi \nu /2)}Q(0)\nonumber  \\
+  + &  \int_{-\infty}^{\infty} \frac{\pi (\nu -\nu {}' -2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}')}\frac{Q(\nu {}')}{\sh(\pi \nu{}' /2)}d\nu {}'.\label{khatQm}
+\end{align}
+
+We can now evaluate the TQ equation under action of $\hat{{\cal{K}}}$. 
+\begin{equation}\label{khatTQ}
+    \hat{{\cal{K}}}\left[Q(\nu + 2i) + Q(\nu -2i ) -2Q(\nu ) \right]  = - 4\pi \lambda \hat{{\cal{K}}}\left[\frac{Q(\nu )}{f_{\alpha }(\nu )}\right] .
+\end{equation}
+Plugging the relations \bref{khatQp}, \bref{khatQm} for $\hat{{\cal{K}}}\left[Q(\nu \pm 2i)\right] $ into the right and side of this equation, we could see that the integral terms cancels out and only the residue terms remain.
+
+Note that throughout the derivation, we assume that $\Im \nu > 0$. If we assume $\Im \nu \leq 0$ instead, the only difference is that the residue terms for $\nu {}' =\nu $ in \bref{khatQp} will be in \bref{khatQm} instead, therefore the right hand side of \bref{khatTQ} remains the same.
+
+Putting everything together, we get 
+\[ 
+    \frac{Q(\nu )}{\sh (\pi \nu /2)} - \lambda \hat{{\cal{K}}}\left[\frac{Q(\nu )}{f_{\alpha }(\nu )}\right]  = \frac{1 }{\sh(\pi \nu /2)}\left[ \frac{i\nu}{4}\left(Q(-2i) -Q(2i)\right) + Q(0)\right] .
+\] 
+Plugging back $Q(\nu )= f_{\alpha }(\nu )\sh(\pi \nu /2)\psi (\nu )$, we indeed arrived at the Fredholm equation \bref{fredholmeq}.
 \section{Analyticity properties}
 From the $TQ$ equation, we could derive the analyticity properties of wave function $\psi(\nu)$. It contains simple poles located at
 \[
