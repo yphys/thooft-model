@@ -37,6 +37,7 @@
 \newcommand{\pd}{\partial}
 \newcommand{\sh}{\textrm{\,sh}}
 \newcommand{\ch}{\textrm{\,ch}}
+\renewcommand{\th}{\textrm{\,th}}
 \renewcommand{\Im}{\textrm{Im\,}}
 \renewcommand{\Re}{\textrm{Re\,}}
 \newcommand{\yp}[1]{{\color{purple} #1}}
@@ -295,9 +296,9 @@ We could compute what each term in the `t Hooft's equation becomes after the int
 	x(1-x)\phi(x) \rightarrow \int_{-\infty}^{\infty}\frac{\nu - \nu{}'}{8\sh\pi(\nu -\nu{}')/2}\psi(\nu{}')\,d\nu{}'.
 \end{gather*}
 Whenever we encounter an singularity on the real line, we use the following prescription of regularization.
-\[
+\begin{equation}\label{regint}
 	\fint \frac{dx }{f(x)}  = \frac{1}{2}\left(\int \frac{dx}{f(x + i\epsilon)} + \int \frac{dx}{f(x - i\epsilon)}\right) = \frac{1}{2}\left(\int_{{\cal C}_{+}}dx  + \int_{{\cal C}_{-}}dx\right)  \frac{1}{f(x)},
-\]
+\end{equation}
 where ${\cal C}_{\pm}$ are contours that shift slightly upward and downward of real line.
 Combing everything together, we get
 \[
@@ -310,12 +311,12 @@ For future notational simplicity, we shall define the following functions.
 \]
 We also define the following functional operators.
 \[
-	\hat{S}f(\nu) \equiv \int_{-\infty}^{\infty}S(\nu - \nu{}')\psi(\nu{}')d\nu{}', \quad
-	\hat{I}f(\nu) \equiv \int_{-\infty}^{\infty}I(\nu - \nu{}')\psi(\nu{}')d\nu{}'.
+	\hat{\cal S}f(\nu) \equiv \int_{-\infty}^{\infty}S(\nu - \nu{}')\psi(\nu{}')d\nu{}', \quad
+	\hat{\cal I}f(\nu) \equiv \int_{-\infty}^{\infty}I(\nu - \nu{}')\psi(\nu{}')d\nu{}'.
 \]
 The `t Hooft's equation becomes a more simple form.
 \[
-	f_{\alpha}(\nu)\psi_n(\nu) = \frac{i\beta}{\pi}\hat{I}\psi_n(\nu)+ \lambda_n \hat{S}\psi_n(\nu).
+	f_{\alpha}(\nu)\psi_n(\nu) = \frac{i\beta}{\pi}\hat{\cal I}\psi_n(\nu)+ \lambda_n \hat{\cal S}\psi_n(\nu).
 \]
 \subsection{The TQ equations}
 \subsubsection*{The equal masses case $(\beta =0)$}
@@ -332,35 +333,88 @@ The equal mass `t Hooft's equation written in terms of $Q$ function is
 \]
 We would like to find a difference equation between $Q(\nu)$ and $Q(\nu \pm 2i )$. To calculate $Q(\nu \pm 2i )$, we could not just naively preform the integration of $\nu{}'$ for the equation above with the replacement $ \nu \rightarrow \nu \pm 2i$.
 
-This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2ki$, where $k = 1, 2, \cdots$. When we want to evaluate $\hat{S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles that comes from the integrand would pass through the real line. In this case, we need to deform the integration contour and $\hat{S}f(\nu)$ would pick up some residue terms. 
+This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \pm 2ki$, where $k = 1, 2, \cdots$. When we want to evaluate $\hat{\cal S}f(\nu)$ beyond the strip $|\Im \nu | < 2$, some poles that comes from the integrand would pass through the real line. In this case, we need to deform the integration contour and $\hat{\cal S}f(\nu)$ would pick up some residue terms. 
 
-More specifically, we denote $\tilde{S}$ as the deformed integral, and $\hat{S}f$ is the naive direct integration we defined earlier. \yp{As shown in figure ?, we have } 
+More specifically, we denote $\tilde{\cal S}$ as the deformed integral, and $\hat{\cal S}f$ is the naive direct integration we defined earlier. \yp{As shown in figure ?, we have } 
 \[ 
-   \tilde{S}f(\nu+2i)  = \left(-i\pi\Res_{x = -2i}\frac{\pi x}{\sh \left(\pi x/ 2\right)} \right) f(\nu) + \hat{S}f(\nu+ 2i) = 2\pi f(\nu) + \hat{S}f(\nu+ 2i).
+   \tilde{\cal S}f(\nu+2i)  = \left(-i\pi\Res_{x = -2i}\frac{\pi x}{\sh \left(\pi x/ 2\right)} \right) f(\nu) + \hat{\cal S}f(\nu+ 2i) = 2\pi f(\nu) + \hat{\cal S}f(\nu+ 2i).
 \] 
-Similarly, the analytically continued integral  $\tilde{S}(\nu-2i)$ equals 
+Similarly, the analytically continued integral  $\tilde{\cal S}(\nu-2i)$ equals 
 \[ 
-    \tilde{S}(\nu-2i) =  \left(\pi i \Res_{x = 2i} \frac{\pi x}{\sh (\pi x/2)}\right) f(\nu) + \hat{S}f(\nu-2i) =2\pi f(\nu) +  \hat{S}f(\nu-2i) .
+    \tilde{\cal S}(\nu-2i) =  \left(\pi i \Res_{x = 2i} \frac{\pi x}{\sh (\pi x/2)}\right) f(\nu) + \hat{\cal S}f(\nu-2i) =2\pi f(\nu) +  \hat{\cal S}f(\nu-2i) .
 \] 
 \yp{See figure ? for the illustration of deformed contour.} One technical assumption we need for the two equation above to hold is that $Q(\nu )$ must decay sufficiently fast in the $|\Re \nu| \rightarrow \infty  $ limit so there is no boundary terms. In particular, $\psi(\nu ) = O(e^{\epsilon \nu }), \Re \nu \rightarrow \infty $ for any $\epsilon > 0$.
 
 If we define  $P(\nu) \equiv \frac{Q(\nu )}{f_{\alpha }(\nu )\sh\left(\frac{\pi x}{2}\right)}$, we have 
 \[ 
-    Q(\nu \pm 2i ) = -\lambda \sh \left(\frac{\pi x}{2}\right)\left[\hat{S}P(\nu \pm 2i) + 2\pi P(\nu )\right] .
+    Q(\nu \pm 2i ) = -\lambda \sh \left(\frac{\pi x}{2}\right)\left[\hat{\cal S}P(\nu \pm 2i) + 2\pi P(\nu )\right] .
 \]
 
 On the other hand, observe that 
-\begin{align*}
-  &\hat{S}\left[P(\nu +2i) + P(\nu -2i) + 2P(\nu )\right] =\\ 
+\begin{align}
+  &\hat{\cal S}\left[P(\nu +2i) + P(\nu -2i) + 2P(\nu )\right] = \nonumber \\ 
   &\int_{-\infty}^{\infty} 
-   P(\nu {}')\left[S(\nu -\nu{}' +2i) + S(\nu -\nu{}' +2i) + 2S(\nu -\nu {}')\right] d\nu =0.\\
-\end{align*}
+   P(\nu {}')\left[S(\nu -\nu{}' +2i) + S(\nu -\nu{}' +2i) + 2S(\nu -\nu {}')\right] d\nu =0.\label{ShatRelation}
+\end{align}
 Recall that $S(\nu ) = \frac{\pi \nu }{2 \sh (\pi \nu /2)}$. Putting everything together, we arrived at the TQ equation.
 \[ 
     Q(\nu +2i) + Q(\nu -2i) -2Q(\nu ) = -4\pi \lambda \sh\left(\frac{\pi \nu }{2}\right)P(\nu ) = -\frac{4\pi \lambda }{f_{\alpha }(\nu )}Q(\nu ).
     \] 
-It is a difference equation between $Q(\nu \pm 2i)$ and $Q(\nu )$. Although in the derivation of this equation we assume that $|\Im \nu| \leq 2$, a more careful analysis should show that the TQ equation holds for arbitrary $\nu $. \yp{Is this true?}.
+It is a difference equation between $Q(\nu \pm 2i)$ and $Q(\nu )$. Although the derivation of this equation assumes that $|\Im \nu| \leq 2$, a more careful analysis should show that the TQ equation holds for arbitrary $\nu $. \yp{Is this true?}.
+
+
 \subsubsection*{The unequal masses case $(\beta \neq 0)$}
+\paragraph{}
+In this section, we shall generalized the TQ equation to the unequal mass case, i.e. $\beta \neq 0$. $Q(\nu ) \equiv \sh(\nu \pi /2)\psi(\nu ) / f_{\alpha }(\nu )$ same as before. The 't Hooft equation in terms of $Q$ is 
+\begin{align*}
+  Q(\nu )=  & i\frac{\beta }{\pi } \sh \left(\frac{\pi \nu }{2}\right)\fint_{-\infty}^{\infty} \frac{d\nu {}'}{\sh (\pi (\nu - \nu{}')/2)} \frac{Q(\nu{}')}{\sh \left(\pi \nu{}' /2\right)f_{\alpha }(\nu{}' )} \\
+   +  & \lambda \sh \left(\frac{\pi \nu }{2}\right)\int_{-\infty}^{\infty} \frac{\pi (\nu -\nu{}')}{2\sh(\pi (\nu  -\nu{}' )/2)} \frac{Q(\nu{}' )}{\sh (\pi \nu{}' /2)f_{\alpha }(\nu{}')}d\nu {}'\\ 
+  = & \frac{i\beta }{\pi } \sh \left(\frac{\pi \nu }{2}\right)\hat{\cal I}P(\nu ) + \lambda \sh \left(\frac{\pi \nu }{2}\right)\hat{\cal S}P(\nu ).
+\end{align*}
+
+As we discussed before, when try to evaluate $Q(\nu \pm 2i )$, $\tilde{\cal S}P(\nu \pm 2i)$ would gained a residue term at $\nu {}' = \nu $. On the other hand, $\tilde{\cal I}P(\nu \pm 2i)$ would gain two residue terms at both $\nu {}' = \nu +2i $ and $\nu {}' = \nu $.  This is because the kernel for the operator $\hat{\cal I}$  has poles at $\nu {}' = \nu$ as well as $\nu = \nu +2ki$, where $k=1, 2, \cdots $. \yp{See figure ? for illustration.}
+
+Also, recall that we define the regularized integration $\fint_{-\infty }^{\infty } d\nu {}' $ as one-half of shifting the integration contour by $+ i\epsilon $ plus one-half of shifting integration contour by $-i\epsilon $. See equation \bref{regint}. 
+So only half of residue at $\nu{}' =\nu $ contributed to $\tilde{\cal I}P(\nu \pm 2i)$.  
+
+More specifically, we have the following 
+\begin{align*}
+  \tilde{{\cal{I}}}P(\nu + 2i ) = &  \pi i \left(\Res_{x = -2i}\frac{1}{\sh \left(\pi x/2\right)}\right) P(\nu ) + 2\pi i\left(\Res_{x =0}\frac{1}{\sh \left(\pi x/2\right)}\right)P(\nu +2i) \\
+  +& \hat{{\cal{I}}}P(\nu +2i)\\
+  = & -2i P(\nu ) -4i P(\nu + 2i) + \hat{{\cal{I}}}P(\nu +2i).
+\end{align*}
+Similarly, 
+\begin{align*}
+  \tilde{{\cal{I}}}P(\nu - 2i ) = &  -\pi i \left(\Res_{x = 2i}\frac{1}{\sh \left(\pi x/2\right)}\right) P(\nu ) - 2\pi i\left(\Res_{x =0}\frac{1}{\sh \left(\pi x/2\right)}\right)P(\nu -2i) \\
+  +& \hat{{\cal{I}}}P(\nu -2i)\\
+  = & 2i P(\nu ) + 4i P(\nu - 2i) + \hat{{\cal{I}}}P(\nu -2i).
+\end{align*}
+Using the property \bref{ShatRelation} and the following relation
+\[ 
+   \hat{{\cal{I}}}\left[P(\nu \pm 2i) - P(\nu )\right]   =0, 
+\] 
+We get, 
+\begin{align*}
+  Q(\nu \pm 2i ) = & -\frac{i\beta }{\pi }\sh \left(\frac{\pi \nu }{2}\right) \left[\hat{{\cal{I}}}P(\nu \pm 2i) \mp 2i P(\nu )\mp 4i P(\nu \pm 2i) \right] \\
+  - &\lambda \sh \left(\frac{\pi \nu }{2}\right)\left[\hat{{\cal{S}}}P(\nu \pm 2i) + 2\pi P(\nu )\right] .
+\end{align*}
+Putting everything together, we get the TQ equation for unequal quark mass.
+\begin{align*}
+  & Q(\nu + 2i) + Q(\nu -2i )- 2Q(\nu )  = -\frac{4\beta }{\pi }\left[P(\nu -2i) -4P(\nu +2i)\right]  -4\pi \lambda \sh \left(\frac{\pi \nu }{2}\right)P(\nu ).\\[0.5em]
+  \Rightarrow & \left[1- \frac{4\beta }{\pi }\frac{\th \left(\pi \nu /2\right)}{\frac{2\alpha }{\pi }\th\left(\pi \nu /2\right) -\nu -2i}\right]Q(\nu + 2i) 
++  \left[1 + \frac{4\beta }{\pi }\frac{\th \left(\pi \nu /2\right)}{\frac{2\alpha }{\pi }\th\left(\pi \nu /2\right) -\nu +2i}\right]Q(\nu -  2i) \\
+  = & -4\pi \lambda \frac{\th \left(\pi \nu /2\right)}{\frac{2\alpha }{\pi }\th \left(\pi \nu /2\right) + \nu } Q(\nu ).\\[0.5em]
+  \Rightarrow & \left[1 + \frac{2\beta x}{\nu -2\alpha x +2i }\right] Q(\nu +2i)+ \left[1- \frac{2\beta x}{\nu - 2\alpha x - 2i}\right] Q(\nu -2i) = -\frac{z}{\alpha x + \nu }Q(\nu ).
+\end{align*}
+In the last equation, we defined  
+\[ 
+    \begin{cases}
+      x = \frac{2}{\pi }\th(\pi \nu /2)\\
+      z = -4\pi \lambda \th(\pi \nu /2)\\
+    \end{cases}.
+\] 
+For simpler notation.
+
 \section{Analyticity properties}
 From the $TQ$ equation, we could derive the analyticity properties of wave function $\psi(\nu)$. It contains simple poles located at
 \[
