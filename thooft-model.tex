@@ -240,7 +240,7 @@ Therefore, in the $\lambda\rightarrow0$ limit, $\Gamma(p_{-})$ is
 \]
 and the full fermion propagator is
 \[
-	S(p)= \frac{ip_{-}}{2p_{+}p_{-}+gN^{2}(|p_{-}|/\lambda - 1)/8\pi -m^{2}-i\epsilon} .
+	S(p)= -\frac{ip_{-}}{2p_{+}p_{-}+gN^{2}(|p_{-}|/\lambda - 1)/8\pi -m^{2}-i\epsilon} .
 \]
 
 In particular, in the $\lambda\rightarrow 0$ limit, the pole of this propagator $p^{2} = -m^{2} + gN^{2}\left(|p_{-}|/\lambda -1 \right)/8\pi$ goes to infinity, it means that there are no single fermion asymptotic states in 2D QCD. The fermions must be confined.
@@ -252,7 +252,7 @@ Having derived the quark propagators in the large-$N$ limit, we shall now move o
 The meson propagators contains two fermions as the external states, and we shall denote it as $T_{\alpha\beta;\gamma\delta}(p, p{}';r)$. $p$ and $p{}'$ are incoming and outgoing momentum of the first quark, while $r$ is the transverse momentum.
 In the large-$N$ limit, it satisfy the bootstrap equation. (i.e. The Bethe-Salpeter equation). For a graphical illustration of the bootstrap equation, see figure \ref{fig3}
 \begin{gather*}
-    T_{\alpha\beta;\gamma\delta}(p, p{}';r) = \frac{ig^{2}}{(p-p{}')^{2}}(\gamma)_{\alpha\gamma}(\gamma)_{\beta\delta} +\\
+    T_{\alpha\beta;\gamma\delta}(p, p{}';r) = \frac{ig^{2}}{(p-p{}')^{2}}(\gamma_{-})_{\alpha\gamma}(\gamma_{-})_{\beta\delta} +\\
     ig^{2}N\int\frac{d^{2}k}{(2\pi)^{2}}\frac{(\gamma_{-})_{\alpha\epsilon}(\gamma_{-})_{\beta\lambda}}{(k_{-}-p_{-})^{2}}S_{\epsilon\mu}(k)S_{\lambda\nu}(k-r)T_{\mu\nu;\gamma\delta}(k, p{}';r).
 \end{gather*}
 
@@ -269,15 +269,77 @@ Here, $S_{\alpha\beta}(p)$ is the full quark propagator we derived in the previo
 
 Define the function $\phi(p_{-}, p{}'; r)$ as 
 \[ 
-    \phi(p_{-}, p{}'; r) \equiv \int dp_{+} S_{E}(p)S_{E}(p-r)T(p, p{}'; r).
+    \phi(p_{-}, p{}'; r) \equiv \int_{-\infty}^{\infty}  dp_{+} S_{E}(p)S_{E}(p-r)T(p, p{}'; r).
 \] 
 The Bethe-Salpeter equation simplifies to 
-\[ 
+\begin{equation}\label{bseq1}
     T(p, p{}'; r) = \frac{ig^2}{(p_{-}-p{}'_{-})^{2}} + \frac{ig^{2}N}{\pi^{2}}\int dk_{-} \frac{\phi(p, p{}';r)}{(k_{-}-p_{-})^{2}}.
-\]
-The equation on the right hand side is independent of $p_{-}$, thus so is the meson propagator. 
+\end{equation}
 
-The integral $\phi$ could be evaluated. could be evaluated.
+The equation on the right hand side is independent of $p_{+}$, Thus thus the meson propagator $T(p, p{}';r)$ only depends on $p_{-}$, and by symmetry, it also only depends on $p{}'_{-}$ too. 
+
+Because of this, the integral $\phi$ now could be evaluated.  
+\begin{gather}
+  \phi(p_{-}, p{}'_{-};r) = T(p_{-}, p{}'_{-};r)\int_{-\infty}^{\infty} S_{E}(p)S_{E}(p -r)dp_{+}\nonumber \\
+  = -T(p_{-}, p{}'_{-};r) \int_{-\infty}^{\infty} \frac{dp_{+}}{4\left(p_{+} - P_{+}^{(a)}\right)\left(p_{+} - P_{+}^{(b)}\right)}, \label{phiIntegral}
+\end{gather}
+where $P^{(1, 2)}_{+}$ are the poles of $S_{E}(p)$ and $S_{E}(r -p)$ respectively. They are 
+\begin{gather*}
+    P^{(a)}_{+} = -\frac{1}{2}\frac{g^{2}N}{\pi }\left[\frac{1}{p_{-}}-\frac{\textrm{sgn}(p_{-})}{\lambda }\right] - \frac{m_{a}^{2} + i \epsilon }{2p_{-}} \\
+    P^{(b)}_{-}= r_{+} -\frac{1}{2}\frac{g^{2}N}{\pi } \left[\frac{1}{p_{-}-r_{-}} - \frac{\textrm{sgn}(p_{-} - r_{-})}{\lambda } \right] -\frac{m_{b}^{2} + i \epsilon   }{2\left(p_{-}-r_{-}\right)}.
+\end{gather*}
+\[ 
+\] 
+We have slightly generalized and consider the meson with unequal quark masses. The messes of the quark are now denoted as $m_a$ and $m_b$ respectively. 
+
+The integral in \bref{phiIntegral} could be evaluated easily by completion of the contour. Suppose that we have an integral of the following form $I(z_a, z_{b}) = \int_{-\infty}^{\infty} \frac{dz}{(z-z_a)(z-z_b)}$.  Then 
+\[ 
+   I(z_{a}, z_{b}) = 
+   \begin{cases}
+     0 & \Im z_{a} \Im z_{b} >0 \\ 
+     \frac{2\pi i }{z_{a} - z_{b}} & \Im z_{a}> 0, \quad \Im z_{b} < 0. \\
+     \frac{2\pi i }{z_{b} - z_{a}} & \Im z_{a}<  0, \quad \Im z_{b} >0. 
+    \end{cases}.
+\] 
+Since $\Im P^{(a)} = -\frac{\epsilon }{2p_{-}}$ and $\Im P^{(b)} = \frac{\epsilon }{2(r_{-} -p_{-})}$, $\phi(p_, p{}';r)$ is non-zero when $\textrm{sgn}(r_{-} -  p_{-}) = \textrm{sgn}(p_{-})$, or it is non-zero when $ 0 \leq p_{-} \leq  r_{-}$. The integral \bref{phiIntegral} becomes.
+
+\[ 
+   \phi(p_{-}, p{}'_{-};r) = \theta(p_{-})\theta(r_{-}- p_{-})T(p_{-}, p{}'_{-};r) \frac{\pi i/2}{\left(P^{(b)}_{+} - P^{(a)}_{+}\right)}.
+\] 
+In other words.
+\[ 
+   \theta(p_{-})\theta(r_{-}-p_{-})T(p_{-}, p{}'_{-};r)= \left[\frac{g^{2}N/\pi -m^{2}_{a}}{2p_{-}} + \frac{g^{2}N/\pi -m_{b}^{2}}{2\left(r_{-}-p_{-}\right)} - \frac{g^{2}N}{\pi \lambda }- r_{+}\right] \frac{2\phi (p_{-}, p{}'_{-}; r)}{\pi i}.
+\] 
+Multiplying the Bethe-Salpeter equation \bref{bseq1} with $\theta (p_{-})\theta (r_{-} - p_{-})$, we get, 
+\begin{align}
+  \theta (p_{-})\theta (r_{-} - p_{-})T(p_{-}, p{}'_{-}; r) = & \left[\frac{ig^{2}}{(p_{-}-p{}'_{-})^{2}} + \frac{ig^{2}N}{\pi ^{2}}\int_{-\infty}^{\infty} dk_{-}\frac{\phi (k_{-}, p{}'_{-};r)}{(k_{-}- p_{-})^{2}}\right]\theta (p_{-})\theta (r_{-}-p_{-}) \nonumber \\
+  =  & \frac{g^{2}N}{i\pi ^{2}}\left[\frac{\alpha_{a}}{p_{-}} + \frac{\alpha_{b}}{r_{-}-p_{-}} + \frac{2}{\lambda } - \frac{2\pi r_{+}}{g^{2}N}\right]\phi (p_{-}, p{}'_{-}; r),
+\label{bseq2}
+\end{align}
+where $\alpha_{a} = 1 - \frac{\pi m_{a}^{2}}{g^{2}N}$ and $\alpha_{b} = 1 - \frac{\pi m_{b}^{2}}{g^{2}N}$.
+
+ Since the integral $\int_{-\infty}^{\infty}  \frac{\phi dk_{-} }{(k_{-} - p_{-})^{2}}$ is divergent at $k_{-} = p_{-}$, we need to regularized it by infarred cutoff with $\lambda$. 
+\[ 
+    \int_{-\infty}^{\infty} \frac{\phi (k_{-}, p{}'_{-};r)}{(k_{-}-p_{-})^{2}} dk_{-} = - \frac{2\phi (p_{-}, p{}'_{-}; r)}{\lambda } + \fint_{-\infty}^{\infty} \frac{\phi(k_{-}, p{}'_{-};r)}{(k_{-}-p_{-})^{2}}\, dk_{-}.
+\] 
+We could see that the infarred divergent part in equation \bref{bseq2} cancel out on both sides. Therefore, the Bethe-Salpeter equations are well defined in $\lambda \rightarrow 0$ limit.
+
+Define $x= p_{-}/r_{-}$, $x{}' = p{}'_{-}/r_{-}$, $y = k_{-}/r_{-}$, and $\mu^{2} = \frac{2\pi r_{+}r_{-}}{g^{2}N} = \frac{\pi r^{2}}{g^{2}N}$. The form factor $\phi$ is now a function of $x$ and $x{}'$. The Bethe-Salpeter equation now takes a more familiar form. 
+\begin{equation}\label{bseqphi}
+    \left[\frac{\alpha_{a}}{x} + \frac{\alpha_{b}}{1-x} - \mu^{2}\right] \phi (x, x{}'; r)  = \left[-\frac{\pi^{2}}{Nr_{-}(x - x{}')^{2}} - \fint_{0}^{1}\frac{\phi (x, y; r)}{(x-y)^{2}}\, dy \right] \theta (x(1-x)).
+\end{equation}
+The above equation is the inhomogeneous Bethe-Salpeter equation for the form factor $\phi$. (Or equivalently, the meson propagator $T$.) To further solve this equation, we propose the homogeneous Bethe-Salpeter equation for the wave function $\phi(x)$. 
+\[ 
+    \hat{H}\phi_{k}(x) \equiv \left[\frac{\alpha_{a}}{x}+ \frac{\alpha_{b}}{1-x}\right]  \phi_{k}(x) - \fint_{0}^{1} \frac{\phi_{k}(y)}{(x - y)^{2}}\, dy = \mu_{k}^{2}\phi_{k}(x).
+\]
+The equation above is an eigen-integral equation for the operator $\hat{H}$, and under the following definition of inner product, \[ 
+    \langle \, \phi_{1} ,\, \phi_{2}\, \rangle \equiv  \int_{0}^{1} \phi_{1}^{*}(x)\, \phi_{2}(x)\, dx 
+\] 
+$\hat{H}$ is self adjoint. All the eigenfunctions $\phi_{k}$ forms a complete, orthogonal basis for all square normalizable functions in $[\, 0, \, 1\, ] $. Therefore, the form factor $\phi(x, x{}'; r)$ has the following expansion in terms of $\phi_{k}$.
+\[ 
+    \phi(x, x{}'; r) = \sum_{k, k{}'}\, C_{k, k{}'}(r) \phi_{k}(x)\phi_{k{}'}(x{}').
+\] 
+Substitute this expansion into \bref{bseqphi},  
 \section{The `t Hooft's equation}
 The most general `t Hooft's equation with unequal quark mass is
 \[
@@ -447,7 +509,7 @@ To prove this, let's define another integral operator.
 \] 
 Recall that $S(x) = \frac{\pi x}{\sh(\pi x/2)}$.
 
-We shall act the integral operator $\hat{{\cal{K}}}$ on both side to TQ equation. Before doing that,let's try to evaluate $\hat{{\cal{K}}}\left[Q(\nu \pm 2i)\right]$\footnote{$Q(\nu \pm 2i )$ is being acted on $\hat{{\cal{K}}}$, don't confuse it with $\hat{{\cal{K}}}Q(\nu \pm 2i)$, which means evaluate $\hat{{\cal{K}}}Q$ at $\nu \pm  2i$.}.
+We shall act the integral operator $\hat{{\cal{K}}}$ on both side to TQ equation. Before doing that,let's try to evaluate $\hat{{\cal{K}}}\left[Q(\nu \pm 2i)\right]$\footnote{$Q(\nu \pm 2i )$ is being acted on $\hat{{\cal{K}}}$. Don't confuse it with $\hat{{\cal{K}}}Q(\nu \pm 2i)$, which means evaluate $\hat{{\cal{K}}}Q$ at $\nu \pm  2i$.}.
 
 \begin{align*}
   \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  = &  \fint_{-\infty}^{\infty} \frac{\pi (\nu -\nu{}' )}{2\sh\left(\pi (\nu -\nu{}') /2\right)} \frac{Q(\nu{}' + 2i)}{\sh\left(\pi \nu {}'/2\right)}d\nu {}'\\
