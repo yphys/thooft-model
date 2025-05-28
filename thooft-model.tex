@@ -326,11 +326,11 @@ We could see that the infarred divergent part in equation \bref{bseq2} cancel ou
 
 Define $x= p_{-}/r_{-}$, $x{}' = p{}'_{-}/r_{-}$, $y = k_{-}/r_{-}$, and $\mu^{2} = \frac{2\pi r_{+}r_{-}}{g^{2}N} = \frac{\pi r^{2}}{g^{2}N}$. The form factor $\phi$ is now a function of $x$ and $x{}'$. The Bethe-Salpeter equation now takes a more familiar form. 
 \begin{equation}\label{bseqphi}
-    \left[\frac{\alpha_{a}}{x} + \frac{\alpha_{b}}{1-x} - \mu^{2}\right] \phi (x, x{}'; r)  = \left[-\frac{\pi^{2}}{Nr_{-}(x - x{}')^{2}} - \fint_{0}^{1}\frac{\phi (x, y; r)}{(x-y)^{2}}\, dy \right] \theta (x(1-x)).
+  \left[\frac{\alpha_{a}}{x} + \frac{\alpha_{b}}{1-x} - \mu^{2}\right] \phi (x, x{}'; r)  = \left[-\frac{\pi^{2}}{Nr_{-}(x - x{}')^{2}} - \fint_{0}^{1}\frac{\phi (x{}', y\, ;r)}{(x-y)^{2}}\, dy \right] \theta (x(1-x)).
 \end{equation}
-The above equation is the inhomogeneous Bethe-Salpeter equation for the form factor $\phi$. (Or equivalently, the meson propagator $T$.) To further solve this equation, we propose the homogeneous Bethe-Salpeter equation for the wave function $\phi(x)$. 
+The above equation is the inhomogeneous Bethe-Salpeter equation for the form factor $\phi$. (Or equivalently, the meson propagator $T$.) To further solve this equation, we propose the homogeneous Bethe-Salpeter equation for the (normalized) wave function $\phi(x)$. 
 \[ 
-    \hat{H}\phi_{k}(x) \equiv \left[\frac{\alpha_{a}}{x}+ \frac{\alpha_{b}}{1-x}\right]  \phi_{k}(x) - \fint_{0}^{1} \frac{\phi_{k}(y)}{(x - y)^{2}}\, dy = \mu_{k}^{2}\phi_{k}(x).
+    \hat{H}\phi_{k}(x) \equiv \left[\frac{\alpha_{a}}{x}+ \frac{\alpha_{b}}{1-x}\right]  \phi_{k}(x) + \fint_{0}^{1} \frac{\phi_{k}(y)}{(x - y)^{2}}\, dy = \mu_{k}^{2}\phi_{k}(x).
 \]
 The equation above is an eigen-integral equation for the operator $\hat{H}$, and under the following definition of inner product, \[ 
     \langle \, \phi_{1} ,\, \phi_{2}\, \rangle \equiv  \int_{0}^{1} \phi_{1}^{*}(x)\, \phi_{2}(x)\, dx 
@@ -339,7 +339,41 @@ $\hat{H}$ is self adjoint. All the eigenfunctions $\phi_{k}$ forms a complete, o
 \[ 
     \phi(x, x{}'; r) = \sum_{k, k{}'}\, C_{k, k{}'}(r) \phi_{k}(x)\phi_{k{}'}(x{}').
 \] 
-Substitute this expansion into \bref{bseqphi},  
+Substitute this expansion into \bref{bseqphi}, we get   
+\begin{align*}
+  & \left[\frac{\alpha_{a}}{x} + \frac{\alpha_{b}}{1-x} -\mu^{2}\right] \sum_{k, k{}'}C_{k, k{}'}\phi_{k}(x)\phi_{k{}'}(x{}')  =  -\frac{\pi^{2}}{r_{-}N(x - x{}')^{2}} -  \sum_{k, k{}'}\phi_{k{}'}(x{}') \int_{0}^{1} \frac{\phi_{k}(y)}{(x -y)^{2}}\, dy\\
+  =& -\frac{\pi^{2}}{r_{-}N(x - x{}')^{2}} +  \sum_{k, k{}'}\phi_{k{}'}(x{}') \left[\frac{\alpha_{a}}{x} + \frac{\alpha_{b}}{1-x} -\mu_{k}^{2}\right]\phi_{k}(x).
+\end{align*}
+Therefore, 
+\begin{align*}
+  &\sum_{k}\left(\mu^{2}_{k} -\mu^{2}\right)\phi_{k}(x)\sum_{k{}'}C_{k, k{}'}\phi_{k{}'}(x{}') = - \frac{\pi^{2}}{r_{-}N(x-x{}')^{2}}.\\
+  \Rightarrow & \sum_{k{}'}C_{k, k{}'}\phi_{k{}'}(x{}') = -\frac{\pi^{2}}{Nr_{-}(\mu^{2}-\mu_{k}^{2})}\int_{0}^{1} \frac{\phi^{*}_{k}(x)}{(x-x{}')^{2}}\, dx\\
+  &\hskip 2.5cm  =-\frac{\pi g^{2}}{r_{-}(r^{2}-r_{k}^{2})}\int_{0}^{1} \frac{\phi^{*}_{k}(x)}{(x-x{}')^{2}}\, dx, 
+\end{align*}
+where $r_{k}^{2}= g^{2}N \mu^{2}/\pi $.
+Without solving $C_{k, k{}'}$ directly, we can get the expression for $\phi(x, x{}'; r)$ in terms of $\phi_{k}(x)$.
+\begin{align*}
+  \phi(x, x{}'; r) =  -\frac{1}{r_{-}}\sum_{k}\frac{\pi g^{2}}{r^{2}- r_{k}^{2}}\int_{0}^{1} \frac{\phi_{k}(y{}')\phi_{k}(x)}{(x{}'-y{}')^{2}}\, dy{}', 
+\end{align*}
+and we have an explicit expression for the meson propagator $T(x, x{}'; r)$ .
+\begin{align*}
+    T(x, x{}';r) =& \frac{ig^{2}}{r_{-}^{2}(x - x{}')^{2}} - \frac{ig^{2}N}{r_{-}\pi^{2}}\int_{0}^{1} \frac{\phi(y, x{}';r )}{(x-y)^{2}}\, dy\\
+  =& \frac{ig^{2}}{r_{-}^{2}(x - x{}')^{2}} - \frac{ig^{4}N}{r_{-}^{2}\pi } \sum_{k}\frac{1}{(r^{2}- r_{k}^{2})}\int_{0}^{1} \frac{\phi_{k}(y)\phi^{*}_{k}(y{}')}{(x-y)^{2}(x{}'-y{}')^{2}}\, dydy{}'.
+\end{align*}
+
+We can see that the propagator has poles at $r^{2} = r_{k}^{2}$, which correspond to the spectrum of the meson. Recall that the residues of the propagators could be written in terms of the eigenfunctions of the particles propagating. In particular,
+\[ 
+    T(x, x{}';r) \sim  \sum_{k}\frac{\Phi_{k}(x)\Phi_{k}^{*}(x{}')}{r^{2} - r_{k}^{2}}.
+\]
+Here the $\sim $ symbol means that both side only coincide up to regular terms.
+$\Phi_{k}(x)$ is the wave function for the meson states of the mass $r_{k}$. Comparing with the equation above, we see that 
+\begin{align*}
+  \Phi_{k}(x) =& \left(\frac{N}{i\pi}\right)^{\frac{1}{2}}\frac{g^{2}}{r_{-}} \int_{0}^{1} \frac{\phi_{k}(x{}')}{(x-x{}')^{2}}\, dx{}'\\
+  =&\;  \frac{2g^2}{\lambda }\left(\frac{N}{i\pi}\right)^{\frac{1}{2}}\left[-\phi(x)\theta\left(x(1-x)\right) + \frac{\lambda}{2r_{-}}\fint_{0}^{1} \frac{\phi_{k}(x{}')}{(x-x{}')^{2}}\, dx{}'\right] \\
+  =&\;  -\frac{2g^2}{\lambda }\left(\frac{N}{i\pi}\right)^{\frac{1}{2}}\left[\theta\left(x(1-x)\right) + \frac{\lambda}{2r_{-}}\left(\frac{\alpha_{a}}{x}+ \frac{\alpha_{b}}{1-x} -\mu_{k}^{2}\right)\right]\phi(x) \\
+\end{align*}
+
+We see that the wave function has a $1/\lambda $ factor and formally diverges in the infarred limit. Of course, if we fix the normalization then this divergent factor don't matter, and we essentially have $\Phi_{k}(x) = \phi_{k}(x)$. This divergence compensates the vanishing of the quark propagator in the $\lambda \rightarrow 0$ limit and give a finite bound states amplitudes.
 \section{The `t Hooft's equation}
 The most general `t Hooft's equation with unequal quark mass is
 \[
