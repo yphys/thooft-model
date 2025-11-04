@@ -33,6 +33,9 @@
 \usepackage{feynmp-auto}
 %\usepackage{feynman}
 
+\renewcommand{\[}{\begin{equation}}
+\renewcommand{\]}{\end{equation}}
+
 \newcommand{\bref}[1]{(\ref{#1})}
 \newcommand{\pd}{\partial}
 \newcommand{\sh}{\textrm{\,sh}}
@@ -152,7 +155,7 @@ The Feynman rules are the following:
 	\end{tabular}
 \end{center}
 
-We are interested in the large-$N$ limit. By the standard argument form `t Hooft, the planar graphs with no fermion loops are leading order, and we shall only consider `t Hooft model with one fermions and drop the index $a$.
+We are interested in the large-$N$ limit. By the standard argument from `t Hooft, the planar graphs with no fermion loops are leading order, and we shall only consider `t Hooft model with one fermions and drop the index $a$.
 
 \subsection{Quark Propagators}
 We shall first study the fermion propagators in the leading order of large-$N$ limit. As illustrated in figure \ref{fig1}, if we denote $i\Gamma(p)$ as the sum of all one-particle irreducible diagrams, the fermion propagator $S(p)$ is the sum of all series of $\Gamma(p)$.
@@ -292,7 +295,7 @@ where $P^{(1, 2)}_{+}$ are the poles of $S_{E}(p)$ and $S_{E}(r -p)$ respectivel
 \] 
 We have slightly generalized and consider the meson with unequal quark masses. The messes of the quark are now denoted as $m_a$ and $m_b$ respectively. 
 
-The integral in \bref{phiIntegral} could be evaluated easily by completion of the contour. Suppose that we have an integral of the following form $I(z_a, z_{b}) = \int_{-\infty}^{\infty} \frac{dz}{(z-z_a)(z-z_b)}$.  Then 
+The integral in \bref{phiIntegral} could be evaluated easily by completion of the contour. Suppose that we have an integral of the following from $I(z_a, z_{b}) = \int_{-\infty}^{\infty} \frac{dz}{(z-z_a)(z-z_b)}$.  Then 
 \[ 
    I(z_{a}, z_{b}) = 
    \begin{cases}
@@ -421,11 +424,11 @@ In this section, we shall show that we could recast the `t Hooft's equation into
 
 First define the $Q$ function.
 \begin{equation}\label{qdef}
-	Q(\nu) = \sh\left(\frac{\pi \nu}{2}\right)f_{\alpha}(\nu)\psi(\nu) = \left[\sh\left(\frac{\pi \nu}{2}\right) + \frac{2\alpha}{\pi}\ch\left(\frac{\pi \nu}{2}\right) \right]\psi(\nu).
+	Q(\nu) = \sh\left(\frac{\pi \nu}{2}\right)f_{\alpha}(\nu)\psi(\nu) = \left[\sh\left(\frac{\pi \nu}{2}\right) + \frac{2\alpha}{\pi}\nu \ch\left(\frac{\pi \nu}{2}\right) \right]\psi(\nu).
 \end{equation}
 The equal mass `t Hooft's equation written in terms of $Q$ function is
 \[
-	Q(\nu) = \frac{\pi \lambda}{2}\sh\left(\frac{\pi \nu}{2}\right)\fint_{-\infty}^{\infty} \frac{S(\nu - \nu{}')Q(\nu{}')}{\sh\left(\frac{\pi \nu{}'}{2}\right)f_{\alpha}(\nu{}')}d\nu{}'.
+	Q(\nu) = \lambda \sh\left(\frac{\pi \nu}{2}\right)\fint_{-\infty}^{\infty} \frac{S(\nu - \nu{}')Q(\nu{}')}{\sh\left(\frac{\pi \nu{}'}{2}\right)f_{\alpha}(\nu{}')}d\nu{}'.
 \]
 We would like to find a difference equation between $Q(\nu)$ and $Q(\nu \pm 2i )$. To calculate $Q(\nu \pm 2i )$, we could not just naively preform the integration of $\nu{}'$ for the equation above with the replacement $ \nu \rightarrow \nu \pm 2i$.
 
@@ -433,11 +436,11 @@ This is becase $S(\nu -\nu{}')$ have a series of simple poles at $\nu{}' = \nu \
 
 More specifically, we denote $\tilde{\cal S}$ as the deformed integral, and $\hat{\cal S}f$ is the naive direct integration we defined earlier. \yp{As shown in figure ?, we have } 
 \[ 
-   \tilde{\cal S}f(\nu+2i)  = \left(-i\pi\Res_{x = -2i}\frac{\pi x}{\sh \left(\pi x/ 2\right)} \right) f(\nu) + \hat{\cal S}f(\nu+ 2i) = 2\pi f(\nu) + \hat{\cal S}f(\nu+ 2i).
+   \tilde{\cal S}f(\nu+2i)  = \left(-i\pi\Res_{x = -2i}\frac{\pi x}{2\sh \left(\pi x/ 2\right)} \right) f(\nu) + \hat{\cal S}f(\nu+ 2i) = 2\pi f(\nu) + \hat{\cal S}f(\nu+ 2i).
 \] 
 Similarly, the analytically continued integral  $\tilde{\cal S}(\nu-2i)$ equals 
 \[ 
-    \tilde{\cal S}(\nu-2i) =  \left(\pi i \Res_{x = 2i} \frac{\pi x}{\sh (\pi x/2)}\right) f(\nu) + \hat{\cal S}f(\nu-2i) =2\pi f(\nu) +  \hat{\cal S}f(\nu-2i) .
+    \tilde{\cal S}(\nu-2i) =  \left(i\pi \Res_{x = 2i} \frac{\pi x}{2\sh (\pi x/2)}\right) f(\nu) + \hat{\cal S}f(\nu-2i) =2\pi f(\nu) +  \hat{\cal S}f(\nu-2i) .
 \] 
 \yp{See figure ? for the illustration of deformed contour.} One technical assumption we need for the two equation above to hold is that $Q(\nu )$ must decay sufficiently fast in the $|\Re \nu| \rightarrow \infty  $ limit so there is no boundary terms. In particular, $Q(\nu ) = O(e^{\epsilon |\nu| }), \; \Re \nu \rightarrow \infty $ for any $\epsilon > 0$.
 
@@ -549,7 +552,7 @@ We shall act the integral operator $\hat{{\cal{K}}}$ on both side to TQ equation
   \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  = &  \fint_{-\infty}^{\infty} \frac{\pi (\nu -\nu{}' )}{2\sh\left(\pi (\nu -\nu{}') /2\right)} \frac{Q(\nu{}' + 2i)}{\sh\left(\pi \nu {}'/2\right)}d\nu {}'\\
   = & \fint_{-\infty + 2i}^{\infty + 2i} \frac{\pi (\nu -\nu{}'+2i )}{2\sh\left[\pi (\nu -\nu {}' + 2i) /2\right]} \frac{Q(\nu{}')}{\sh\left[\pi \left(\nu {}' -2i\right)/2\right]}d\nu {}'.
 \end{align*}
-In the second line, we simply changed the integration variable form $\nu \rightarrow \nu -2i$. Now the integration contour has shifted to the line $\left( -\infty + 2i, \; \infty +2i\right)$, we shall move the contour back to the real line $\left(-\infty \;,\; \infty \right)$ picking up any poles appeared in the integrand. \yp{See figure ? for illustration.}
+In the second line, we simply changed the integration variable $\nu \rightarrow \nu -2i$. Now the integration contour has shifted to the line $\left( -\infty + 2i, \; \infty +2i\right)$, we shall move the contour back to the real line $\left(-\infty \;,\; \infty \right)$ picking up any poles appeared in the integrand. \yp{See figure ? for illustration.}
 
 Since $Q(\nu )$ is analytic on the strip $|\Im \nu| < 2$, the only possible place the poles could must come from either the $1/\sh(\pi \nu /2)$ factor or the $S(\nu -\nu {}')$ factor. They are located at 
 \[ 
@@ -569,7 +572,7 @@ Let's for a moment assume that $\Im \nu > 0$, then $\hat{{\cal{K}}}\left[Q(\nu +
 \end{align*}
 or 
 \begin{align}
-  \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  =& 4\pi \frac{Q(\nu )}{\sh (\pi \nu /2)}-i\pi \frac{\nu }{\sh(\pi \nu /2)}Q(2i) - i\pi \frac{\nu + 2i}{\sh (\pi \nu /2)}Q(0)\nonumber \\
+  \hat{{\cal{K}}}\left[Q(\nu + 2i)\right]  =& -4\pi \frac{Q(\nu )}{\sh (\pi \nu /2)}-i\pi \frac{\nu }{\sh(\pi \nu /2)}Q(2i) - i\pi \frac{\nu + 2i}{\sh (\pi \nu /2)}Q(0)\nonumber \\
   + & \int_{-\infty}^{\infty} \frac{\pi (\nu -\nu {}' + 2i)}{2\sh \frac{\pi }{2}(\nu -\nu {}')}\frac{Q(\nu {}')}{\sh(\pi \nu{}' /2)}d\nu {}'. \label{khatQp}
 \end{align}
 
@@ -578,7 +581,7 @@ Now, let's try to evaluate $\hat{{\cal{K}}}\left[Q(\nu -2i)\right] $. We could d
   \hat{{\cal{K}}}\left[Q(\nu - 2i)\right]  = &  \fint_{-\infty}^{\infty} \frac{\pi (\nu -\nu{}' )}{2\sh\left(\pi (\nu -\nu{}') /2\right)} \frac{Q(\nu{}' - 2i)}{\sh\left(\pi \nu {}'/2\right)}d\nu {}'\\
   = & \fint_{-\infty - 2i}^{\infty  - 2i} \frac{\pi (\nu -\nu{}'-2i )}{2\sh\left[\pi (\nu -\nu {}' - 2i) /2\right]} \frac{Q(\nu{}')}{\sh\left[\pi \left(\nu {}' +2i\right)/2\right]}d\nu {}'.
 \end{align*}
-Again, shifting the integration contour from $\left(-\infty -2i\;,\;\infty -2i\right)$ back to the real line, and picking up any residue terms coming from the region $ -2 \leq \Im \nu \leq 0 $. This time, there are only two half-residue terms, coming from the contribution of $\nu{}' = -2i$ and $\nu = 0$.
+Again, shifting the integration contour  $\left(-\infty -2i\;,\;\infty -2i\right)$ back to the real line, and picking up any residue terms coming from the region $ -2 \leq \Im \nu \leq 0 $. This time, there are only two half-residue terms, coming from the contribution of $\nu{}' = -2i$ and $\nu = 0$.
 
 \begin{align*}
   \hat{{\cal{K}}}\left[Q(\nu -2i)\right] = & \pi i \Res_{\nu {}' =-2i}\left[\frac{1}{\sh \frac{\pi }{2}(\nu{}'+ 2i)}\right] \left.\left\{Q(\nu {}')\frac{\pi (\nu -\nu {}' -2i)}{2\sh\frac{\pi }{2}(\nu -\nu {}'-2i)}\right\} \right|_{\nu {}'=-2i}\\
@@ -596,7 +599,7 @@ We can now evaluate the TQ equation under action of $\hat{{\cal{K}}}$.
 \begin{equation}\label{khatTQ}
     \hat{{\cal{K}}}\left[Q(\nu + 2i) + Q(\nu -2i ) -2Q(\nu ) \right]  = - 4\pi \lambda \hat{{\cal{K}}}\left[\frac{Q(\nu )}{f_{\alpha }(\nu )}\right] .
 \end{equation}
-Plugging the relations \bref{khatQp}, \bref{khatQm} for $\hat{{\cal{K}}}\left[Q(\nu \pm 2i)\right] $ into the right and side of this equation, we could see that the integral terms cancels out and only the residue terms remain.
+Plugging the relations \bref{khatQp}, \bref{khatQm} for $\hat{{\cal{K}}}\left[Q(\nu \pm 2i)\right] $ into the left hand side of this equation, we could see that the integral terms cancels out and only the residue terms remain.
 
 Note that throughout the derivation, we assume that $\Im \nu > 0$. If we assume $\Im \nu \leq 0$ instead, the only difference is that the residue terms for $\nu {}' =\nu $ in \bref{khatQp} will be in \bref{khatQm} instead, therefore the right hand side of \bref{khatTQ} remains the same.
 
@@ -606,6 +609,8 @@ Putting everything together, we get
 \] 
 Plugging back $Q(\nu )= f_{\alpha }(\nu )\sh(\pi \nu /2)\psi (\nu )$, we indeed arrived at the Fredholm equation \bref{fredholmeq}.
 \section{Analyticity properties}
+\subsection{The analyticity properties of wave function}
+\paragraph{}
 From the $TQ$ equation, we could derive the analyticity properties of wave function $\psi(\nu)$. It contains simple poles located at
 \[
 	\nu_{k}(\alpha + \beta) = \nu_{k}(\alpha_1), \quad  -\nu_{k}(\alpha - \beta) = -\nu_{k}(\alpha_2), \quad k = 1, 2, \cdots
@@ -636,12 +641,79 @@ Then the integral transformation \bref{x2nuCordTrans} would generate a series of
 	\end{cases}, \quad \beta_i\cot\pi \beta_i + \alpha_i =0.
 \]
 
+To prove the poles of $\psi(\nu)$ are the ones described above, we need a deeper analysis of the `t hooft equation.  
+
+In particular, we need to know if given a meromorphic function $f(\nu)$ with known poles, what are the locations and residues of the poles of  $\hat{{\cal{S}}}f(\nu)$.
+
+Let's assume that $f(\nu)$ have only a single pole at $\nu = \mu$, and $\textrm{Im}\, \mu > 0$. Recall that 
+\[
+\hat{{\cal{S}}}f(\nu)= \int_{-\infty}^{\infty} \frac{\pi(\nu-\nu{'})}{2\sh\frac{\pi}{2}\left(\nu -\nu{}'\right)} f(\nu{}')d\nu{}'.
+\]
+
+The integrand has poles at $\nu{}' = \mu$  and $\nu{}' = \nu \pm 2 i \mathbb{N}$. If we move $\nu$ around in the complex plane, whenever the poles $\nu \pm 2i \mathbb{N}$ passes through the real line, we need to include a residue term correspond to that pole \yp{See figure ?}.  
+
+Consider the case where $\nu$ is in the strip $2n_{0} < \textrm{Im}\, \nu < 2(n_{0} + 1)$, the analytic continued $\hat{{\cal{S}}}f(\nu)$ should be 
+\begin{align}
+  \hat{\cal S}f(\nu) = & \overline{{\cal{S}}}f(\nu) - 2\pi i\Res_{\nu{}'=\nu-2i} S( \nu -\nu{}')f(\nu -2i )\nonumber \\
+ - &  2\pi i \Res_{\nu{}' = \nu -4i  } S( \nu{}' - \nu) f( \nu -4i)\nonumber \\
+  \vdots & \nonumber \\
+  -  &  2\pi i \Res_{\nu{}' = \nu -2n_{0}i}  S( \nu{}' - \nu)f( \nu -2n_{0}i ).
+  \label{SHatContinued2}
+\end{align}
+Here $\overline{{\cal{S}}}f$ is the naive integral operator with direct integration.
+Using the fact that\\  $2\pi i \Res_{x = n}\left[\pi x / (\sh \pi x /2 )\right]= 4\pi i (-1)^{n + 1}n$, we could rewrite the analytically continued $\hat{{\cal S}}f$ as 
+\[
+   \hat{{\cal S}}f(\nu) = \overline{{\cal{S}}}f( \nu)- 4\pi f(\nu-2i)  + 8\pi f\left(\nu- 4i \right) + \cdots +(-1)^{n_{0}}4n_{0}\pi f\left(\nu - 2i n_{0}\right).
+   \label{SHatContinued}
+\]
+
+From the expression above, we can see that $\hat{{\cal S}}f(\nu)$ has poles at $\nu = \mu + 2i, \mu + 4i, \cdots  $.  Pictorially the these poles occurs at the position where the strings of poles $\nu + 2i \mathbb{N}$ from $S(\nu{}' -\nu)$ collides with the poles from $f(\nu)$ at $\nu = \mu$, \yp{ as illustrated in figure ? }.
+
+Also, from \bref{SHatContinued}, we could derive the residue of $\hat{{\cal S}}f(\nu) $ for $\nu = \mu + 2ki $ to equal to be $4\pi(-1)^{k}kr_{0}$, where $r_{0}$ is the residue of $f(\nu)$ at $\mu$.
+
+Note that we have assumed $\Im \mu > 0$. Similar analysis could be preformed with $\Im \mu < 0$ and we get that the strings of poles of $\hat{{\cal S}}f(\nu)$ that correspond to the pole $\mu$ are $\mu -2i k $, with residues $4\pi(-1)^{k}r_{0}$.
+
+To generalize, if $f(\nu)$ has multiple poles at $\nu = \mu_{n}$, then $\hat{{\cal S}}f(\nu)$ will generated a strings of poles $\mu_{n} + 2ki $ or $\mu_{n} -2ki$ for each pole depending if the pole is in the upper half plane or the lower half plane.
+
+Now, we shall preform the same analysis for the integral operator $\hat{{\cal{I}}}$. We assume $f(\nu)$ has a single pole at $\nu = \mu$ with $\Im \mu > 0$ as usual. Recall that the operator $\hat{{\cal{I}}}$ is defined as 
+\[
+    \hat{{\cal{I}}}f(\nu) = \fint_{-\infty}^{\infty} \frac{d\nu{}'}{\sh \pi (\nu - \nu{}')/2}f(\nu{}').
+\]
+
+The integrand has poles at $\nu{}' =\mu$ coming from $f(\nu)$ and a series of poles at $\nu{}' = \nu + 2i \mathbb{Z}$ coming from $I(\nu - \nu{}')$.
+
+By the same argument as $\hat{{\cal{S}}}$, we see that when $\nu$ in in the strip $2n_{0} < \Im \nu  < 2(n_{0} + 1)$, the deformed $\hat{{\cal{I}}}f( \nu)$ equals 
+\begin{align}
+  \hat{{\cal{I}}}f(\nu) = & \overline{{\cal{I}}}f(\nu) - { \color{red} \pi i \Res_{\nu{}' = \nu}I(\nu- \nu{}')f(\nu)\nonumber }\\
+  - & 2\pi i \Res_{\nu{}' = \nu -2i}I(\nu -\nu{}')f(\nu-2i)\nonumber \\
+  \vdots & \nonumber \\
+  - & 2\pi i \Res_{\nu{}' = \nu -2n_{0}i}I(\nu -\nu{}')f(\nu -2 n_{0}i).
+\end{align}
+Compare this equation to \bref{SHatContinued2}, there is an extra one-half residue term at $\nu{}' = \nu$. This term come from the singularity of $I(\nu)$ at $\nu =0$, and $\fint{}$ regularize it by taking one-half of the residue. 
+
+Using $2\pi i \Res_{x = n}I(x)  = 4i(-1)^{n}$, we have 
+\[
+   \hat{{\cal{I}}}f(\nu) = \overline{{\cal{I}}}f(\nu)- {\color{red}2if(\nu)}+ 4i f(\nu - 2i) - 4i f( \nu - 4i) + \cdots (-1)^{n_{0} + 1}f(\nu - 2n_{0}i) .
+\]
+Therefore, we can see that $\hat{{\cal{I}}}f(\nu)$ has poles at  $\mu, \mu + 2i,  \mu + 4i\cdots$, with residues $-2ir_{0}, 4ir_{0}, -4ir_{0}$. If $\Im \mu < 0$, then the series of poles are $\mu, \mu -2i, \mu -4i, \cdots$ with residues $2ir_{0}, -4ir_{0}, 4ir_{0},\cdots$.
+
+How integral operators $\hat{{\cal{S}}}$ and $\hat{{\cal{I}}}$ transformed the locations of poles are very important for us to determine the locations of the poles of wave function $\psi(\nu)$. Let's consider the equal mass `t Hooft equation first.
+\[
+   f_{\alpha}(\nu)\psi(\nu)  = \lambda_{n} \hat{{\cal{S}}}\psi(\nu) .
+\]
+
+Notice that if $\psi(\nu)$ has a pole at $\nu = \nu_{0}, \Im \nu_{0} > 0$, then either (1) $\hat{{\cal{S}}}\psi$ is analytic at $\nu =\nu_{0}$ or (2) $\hat{{\cal{S}}}\psi_n$ has a pole at $\nu = \nu_{0}$, and it comes form another pole of $\psi(\nu)$ at $\nu = \nu_{0} -2k i$. Without loss of generality, we cold assume that (1) is the case, otherwise we will shift our attention to the pole at $\nu_{0} -2ki$. In this case, for the `t Hooft equation to be consistent, $\nu_{0}$ must be a root of $f_{a}(\nu)$. Same argument applies for the case $\Im\nu_{0} <0$. These poles are the \emph{primary poles}. For every primary poles, there must be a series of \emph{descendent poles} at  $\nu_{0} \pm 2i \mathbb{N}$ for the `t Hooft equation to be consistent.
+
+
+\subsection{The pinching singularities}
+\paragraph{}
 We know that when we fine-tune $\alpha, \beta$ such that two poles collide, it correspond to a branching singularity in the spectrum. We call them \emph{pinching singularity.}
 
-Let's consider the equal mass case $\beta =0 $ first. In this case, only primary poles can collide. The collision point is given by when $f_{\alpha}(\nu)$ develops double roots. In other words, the pinching singularities $\alpha^*$ are given by the equations.
+Let's consider the equal mass case $\beta =0 $ first. In this case, only primary poles can collide. The collision point is given by when $f_{\alpha}(\nu)$ develops double roots. In other words, the pinching singularities $\alpha^*$ are given by the equations 
 \[
-	f_{\alpha^*}(\nu) =0, \quad f{}'_{\alpha^*}(\nu) =0.
+	f_{\alpha^*}(\nu) =0, \quad f{}'_{\alpha^*}(\nu) =0. 
 \]
+
 \nocite{*}
 \printbibliography
 
